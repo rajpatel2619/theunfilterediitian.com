@@ -651,37 +651,233 @@
 }
 
 @media (max-width: 760px) {
+  .page::before,
+  .page::after {
+    display: none;
+  }
+
   .main {
-    gap: 24px;
-    padding: 20px 16px 36px;
+    gap: 18px;
+    padding: 14px 12px 32px;
+  }
+
+  .hero,
+  .metricsBand,
+  .featureSection,
+  .section,
+  .showcaseSection,
+  .quoteCard,
+  .quoteChecklist {
+    border-radius: 18px;
   }
 
   .hero,
   .featureSection,
   .section,
   .showcaseSection {
-    padding: 22px;
+    padding: 18px;
+  }
+
+  .hero {
+    gap: 20px;
+  }
+
+  .heroCopy {
+    gap: 18px;
+  }
+
+  .kicker,
+  .sectionEyebrow,
+  .heroOverlayPill,
+  .heroHighlightBadge,
+  .courseTag,
+  .courseAudience,
+  .linkPill,
+  .featureId,
+  .boardEyebrow,
+  .boardCardLabel,
+  .showcasePill {
+    max-width: 100%;
+    letter-spacing: 0.05em;
   }
 
   .title {
     max-width: none;
-    font-size: clamp(2.8rem, 13vw, 4.4rem);
+    font-size: 2.35rem;
+    line-height: 1.04;
+    letter-spacing: -0.035em;
+  }
+
+  .accentText {
+    display: block;
+  }
+
+  .lede {
+    font-size: 0.98rem;
+    line-height: 1.65;
   }
 
   .actions,
   .cardLinks {
     flex-direction: column;
+    gap: 10px;
   }
 
   .primaryAction,
   .secondaryAction,
   .cardLinks a,
   .linkCard a {
+    min-height: 48px;
     width: 100%;
+    border-radius: 8px;
+    padding: 0 16px;
+  }
+
+  .trustRow {
+    gap: 8px;
+  }
+
+  .trustChip {
+    padding: 8px 10px;
+    font-size: 0.78rem;
+  }
+
+  .heroImageFrame {
+    min-height: 270px;
+    border-radius: 16px;
+  }
+
+  .heroImageOverlay {
+    right: 12px;
+    bottom: 12px;
+    left: 12px;
+    gap: 8px;
+    padding: 14px;
+    border-radius: 14px;
+  }
+
+  .heroImageOverlay strong {
+    max-width: none;
+    font-size: 0.98rem;
+    line-height: 1.35;
+  }
+
+  .heroHighlightGrid,
+  .courseGrid,
+  .linkGrid,
+  .metricsBand,
+  .courseGrid,
+  .quoteSection {
+    gap: 12px;
+  }
+
+  .heroHighlightCard,
+  .metricCard,
+  .featureCard,
+  .featureBoard,
+  .boardCard,
+  .courseCard,
+  .linkCard,
+  .showcasePrimary,
+  .showcaseSecondary,
+  .showcaseNote {
+    border-radius: 14px;
+  }
+
+  .heroHighlightCard,
+  .featureCard,
+  .boardCard {
+    padding: 16px;
+  }
+
+  .metricsBand {
+    padding: 12px;
+  }
+
+  .metricCard {
+    grid-template-columns: auto 1fr;
+    align-items: center;
+    padding: 14px;
+  }
+
+  .metricValue {
+    min-width: 58px;
+    font-size: 1.7rem;
+    letter-spacing: -0.03em;
+  }
+
+  .metricLabel {
+    line-height: 1.48;
+  }
+
+  .sectionHeader {
+    gap: 10px;
+    margin-bottom: 18px;
+  }
+
+  .sectionHeader h2 {
+    font-size: 1.85rem;
+    line-height: 1.07;
+    letter-spacing: -0.035em;
+  }
+
+  .sectionHeader p {
+    line-height: 1.65;
+  }
+
+  .featureCard {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .featureId {
+    min-width: 0;
+  }
+
+  .featureBoard,
+  .courseCard,
+  .linkCard {
+    gap: 16px;
+    padding: 18px;
+  }
+
+  .featureImageFrame {
+    min-height: 210px;
+    border-radius: 14px;
   }
 
   .boardGrid {
     grid-template-columns: 1fr;
+  }
+
+  .featureCard h3,
+  .featureBoard h3,
+  .courseCard h3,
+  .linkCard h3,
+  .quoteChecklist h3,
+  .showcaseCopy h3,
+  .showcaseNote h3 {
+    font-size: 1.14rem;
+  }
+
+  .featureCard p,
+  .featureBoard p,
+  .courseDescription,
+  .linkCard p,
+  .quoteChecklist p,
+  .quoteAuthor,
+  .showcaseCopy p,
+  .showcaseMiniCopy p,
+  .showcaseNote p {
+    line-height: 1.62;
+  }
+
+  .showcasePrimary .showcaseImageWrap {
+    min-height: 230px;
+  }
+
+  .showcaseSecondary .showcaseImageWrap {
+    min-height: 210px;
   }
 
   .showcaseCopy,
@@ -689,6 +885,56 @@
   .showcaseNote,
   .quoteCard,
   .quoteChecklist {
-    padding: 22px;
+    padding: 18px;
+  }
+
+  .quoteText {
+    font-size: 1.62rem;
+    line-height: 1.13;
+    letter-spacing: -0.035em;
+  }
+}
+
+@media (max-width: 420px) {
+  .main {
+    padding: 12px 10px 28px;
+  }
+
+  .hero,
+  .featureSection,
+  .section,
+  .showcaseSection {
+    padding: 16px;
+  }
+
+  .title {
+    font-size: 2.05rem;
+  }
+
+  .kicker,
+  .sectionEyebrow,
+  .heroOverlayPill,
+  .heroHighlightBadge,
+  .courseTag,
+  .courseAudience,
+  .linkPill,
+  .featureId,
+  .boardEyebrow,
+  .boardCardLabel,
+  .showcasePill {
+    font-size: 0.64rem;
+  }
+
+  .heroImageFrame {
+    min-height: 240px;
+  }
+
+  .sectionHeader h2 {
+    font-size: 1.65rem;
+  }
+
+  .metricCard {
+    grid-template-columns: 1fr;
+    align-items: start;
   }
 }

@@ -340,6 +340,11 @@
 }
 
 @media (max-width: 960px) {
+  .headerWrap {
+    position: sticky;
+    top: 0;
+  }
+
   .headerInner {
     grid-template-columns: minmax(0, 1fr) auto;
     justify-items: stretch;
@@ -347,10 +352,17 @@
 
   .brand {
     min-width: 0;
+    gap: 10px;
   }
 
   .brandText {
     min-width: 0;
+  }
+
+  .brandText strong {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 
   .brandText span {
@@ -373,6 +385,7 @@
   .mobileDrawer {
     display: flex;
     flex-direction: column;
+    gap: 18px;
   }
 
   .footerGrid {
@@ -388,25 +401,61 @@
 @media (max-width: 760px) {
   .headerWrap,
   .footerWrap {
-    padding-inline: 16px;
+    padding-inline: 12px;
   }
 
   .headerInner {
-    gap: 14px;
-    padding: 14px 0;
+    gap: 10px;
+    padding: 12px 0;
   }
 
   .brandMark {
-    width: 48px;
-    height: 42px;
+    width: 42px;
+    height: 38px;
     border-radius: 8px;
+    font-size: 0.76rem;
   }
 
   .brandText strong {
-    font-size: 0.95rem;
+    font-size: 0.92rem;
+  }
+
+  .menuButton {
+    width: 42px;
+    height: 38px;
+  }
+
+  .mobileDrawer {
+    width: min(88vw, 340px);
+    padding: 18px;
+  }
+
+  .mobileNavLink,
+  .drawerCta {
+    min-height: 46px;
   }
 
   .footerInner {
-    padding: 22px 16px;
+    padding: 22px 12px;
+  }
+}
+
+@media (max-width: 420px) {
+  .brand {
+    gap: 8px;
+  }
+
+  .brandMark {
+    width: 38px;
+    height: 36px;
+  }
+
+  .brandText strong {
+    max-width: 190px;
+  }
+
+  .mobileDrawer {
+    width: 92vw;
+    padding: 16px;
   }
 }
