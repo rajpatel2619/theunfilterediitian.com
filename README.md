@@ -44,4 +44,4 @@ npm run build
 
 ## Content
 
-Most shared navigation, link, course, session, and contributor data lives in `src/app/site-config.ts`. Update that file when you want to change courses, link labels, session types, or contributor roles.
+Most shared navigation, link, course, session, and contributor data lives in `app/site-config.ts`. Update that file when you want to change courses, link labels, session types, or contributor roles.
