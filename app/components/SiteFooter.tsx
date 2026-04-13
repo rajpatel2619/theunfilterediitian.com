@@ -12,8 +12,8 @@ export default function SiteFooter() {
             <div>
               <h2>The Unfiltered IITian</h2>
               <p>
-                Live courses, mentorship sessions, resume reviews, and practical student guidance
-                from one active community.
+                A cleaner front door for students who want useful links, honest direction, and
+                active community support.
               </p>
             </div>
           </div>

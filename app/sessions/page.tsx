@@ -4,15 +4,15 @@ import { actionLinks, externalAnchorProps, sessionTypes } from "../site-config";
 import styles from "../inner-page.module.css";
 
 const sessionNotes = [
-  "Join mentorship rooms when you need academic, career, or college direction.",
-  "Request a resume review before internships, projects, placements, or profile pushes.",
-  "Follow course sessions when new live topics open inside the community.",
+  "Bring one clear question so the live room can move faster.",
+  "Use review clinics when you want feedback on a specific document or profile.",
+  "Check the latest announcement before joining because slots can change by week.",
 ];
 
 export const metadata: Metadata = {
   title: "Sessions",
   description:
-    "Track live courses, mentorship sessions, resume review clinics, and community support calls.",
+    "Track mentorship office hours, open discussion rooms, and resume review clinics from The Unfiltered IITian.",
 };
 
 export default function SessionsPage() {
@@ -21,10 +21,10 @@ export default function SessionsPage() {
       <section className={styles.hero}>
         <div className={styles.heroCopy}>
           <span className={styles.eyebrow}>Sessions</span>
-          <h1>Live rooms for mentorship, resume reviews, and focused learning.</h1>
+          <h1>Live rooms for questions that need a human answer.</h1>
           <p>
-            Use this page to follow the live rhythm of The Unfiltered IITian: course sessions,
-            office hours, review clinics, and student-focused conversations.
+            Sessions are separate from course tracks. They are built for decisions, doubts, profile
+            feedback, and conversations that work better live.
           </p>
         </div>
 
@@ -39,16 +39,16 @@ export default function SessionsPage() {
             />
             <div className={styles.heroImageNote}>
               <span className={styles.miniPill}>Live rooms</span>
-              <p>Mentorship, review clinics, and workshops stay easy to find.</p>
+              <p>Pick the room format before you open the booking or community link.</p>
             </div>
           </div>
 
           <aside className={styles.heroPanel}>
             <h3>Session focus</h3>
             <ul>
-              <li>Topic-based live learning and workshop discussions.</li>
-              <li>Mentorship for planning, decisions, and career direction.</li>
-              <li>Resume and profile reviews with practical feedback.</li>
+              <li>Planning and decision support.</li>
+              <li>Resume, project, and profile review formats.</li>
+              <li>Open Q and A for questions that do not fit a course.</li>
             </ul>
           </aside>
         </div>
@@ -57,10 +57,10 @@ export default function SessionsPage() {
       <section className={styles.section}>
         <div className={styles.sectionHeader}>
           <span className={styles.eyebrow}>Upcoming</span>
-          <h2>Follow the session type that matches what you need today.</h2>
+          <h2>Choose the room by the kind of answer you need.</h2>
           <p>
-            Each session can link to a WhatsApp announcement, booking form, calendar invite, or
-            resource thread once the next room is scheduled.
+            Each session type can connect to a booking form, community announcement, calendar invite,
+            or review request link.
           </p>
         </div>
 
@@ -77,8 +77,8 @@ export default function SessionsPage() {
 
       <section className={styles.section}>
         <div className={styles.sectionHeader}>
-          <span className={styles.eyebrow}>Join Live</span>
-          <h2>Use the right link for course updates, mentorship, or resume review.</h2>
+          <span className={styles.eyebrow}>Before Joining</span>
+          <h2>Come prepared so the live time stays useful.</h2>
         </div>
 
         <div className={styles.grid}>

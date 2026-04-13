@@ -6,7 +6,7 @@ import styles from "../inner-page.module.css";
 export const metadata: Metadata = {
   title: "Contributors",
   description:
-    "Meet the mentors, course hosts, reviewers, and support roles behind The Unfiltered IITian community.",
+    "Meet the roles that keep The Unfiltered IITian organized, responsive, and useful.",
 };
 
 export default function ContributorsPage() {
@@ -15,10 +15,9 @@ export default function ContributorsPage() {
       <section className={styles.hero}>
         <div className={styles.heroCopy}>
           <span className={styles.eyebrow}>Contributors</span>
-          <h1>The mentors, hosts, and reviewers who keep the community useful.</h1>
+          <h1>The roles behind the work that keep the community steady.</h1>
           <p>
-            The Unfiltered IITian runs on people who teach live, answer student questions, review
-            profiles, and keep the community moving toward practical outcomes.
+            This page explains who keeps the system moving: direction, hosting, review, and support.
           </p>
         </div>
 
@@ -33,16 +32,16 @@ export default function ContributorsPage() {
             />
             <div className={styles.heroImageNote}>
               <span className={styles.miniPill}>People behind it</span>
-              <p>Live courses and mentorship work best when the right people are visible.</p>
+              <p>Clear roles make it easier for students to know who does what.</p>
             </div>
           </div>
 
           <aside className={styles.heroPanel}>
             <h3>Who contributes</h3>
             <ul>
-              <li>Mentors who guide decisions and career direction.</li>
-              <li>Course hosts who run live topic sessions.</li>
-              <li>Reviewers who improve resumes and profiles.</li>
+              <li>People who shape the calendar.</li>
+              <li>People who run rooms and resources.</li>
+              <li>People who handle review and access support.</li>
             </ul>
           </aside>
         </div>
@@ -51,10 +50,10 @@ export default function ContributorsPage() {
       <section className={styles.section}>
         <div className={styles.sectionHeader}>
           <span className={styles.eyebrow}>Team</span>
-          <h2>Every strong student community needs clear roles behind the work.</h2>
+          <h2>The community works better when responsibilities are visible.</h2>
           <p>
-            These roles help students know where guidance, courses, reviews, and onboarding support
-            come from inside The Unfiltered IITian.
+            Replace these role cards with real names whenever you want the site to show individual
+            contributors.
           </p>
         </div>
 

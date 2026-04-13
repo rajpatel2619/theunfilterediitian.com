@@ -7,21 +7,21 @@ const contactMethods = [
   {
     title: "Community WhatsApp",
     description:
-      "Join The Unfiltered IITian community for course alerts, session updates, resources, and student discussions.",
+      "Use this when you want the main The Unfiltered IITian community space.",
     href: actionLinks.whatsappCommunity,
     label: "Join WhatsApp community",
   },
   {
     title: "Mentorship Sessions",
     description:
-      "Use live mentorship for planning, college choices, career direction, internships, and next-step clarity.",
+      "Use this when you need a planning conversation or decision support.",
     href: actionLinks.mentorshipBooking,
     label: "Book mentorship",
   },
   {
     title: "Resume Reviews",
     description:
-      "Request feedback on resume structure, project framing, achievements, and profile positioning.",
+      "Use this when you have a resume, project list, or profile draft ready for feedback.",
     href: actionLinks.resumeReviewBooking,
     label: "Request resume review",
   },
@@ -37,7 +37,7 @@ const contactMethods = [
 export const metadata: Metadata = {
   title: "Contact",
   description:
-    "Contact The Unfiltered IITian for WhatsApp community access, mentorship, resume reviews, and live courses.",
+    "Contact The Unfiltered IITian and open the right community, booking, review, or email link.",
 };
 
 export default function ContactPage() {
@@ -46,10 +46,9 @@ export default function ContactPage() {
       <section className={styles.hero}>
         <div className={styles.heroCopy}>
           <span className={styles.eyebrow}>Contact</span>
-          <h1>Reach the right place for community access, mentorship, or resume review.</h1>
+          <h1>Use the right link instead of waiting for someone to forward it.</h1>
           <p>
-            Join the WhatsApp community, ask about live courses, book mentorship, request a resume
-            review, or send a longer question by email.
+            This page is the action desk. Pick the closest route and keep the conversation moving.
           </p>
         </div>
 
@@ -64,16 +63,16 @@ export default function ContactPage() {
             />
             <div className={styles.heroImageNote}>
               <span className={styles.miniPill}>Support desk</span>
-              <p>Choose the contact path that matches what you need right now.</p>
+              <p>One page for links, forms, and longer messages.</p>
             </div>
           </div>
 
           <aside className={styles.heroPanel}>
             <h3>Best paths</h3>
             <ul>
-              <li>WhatsApp for community access and fast updates.</li>
-              <li>Mentorship for planning and decision support.</li>
-              <li>Resume reviews for internships, projects, and placements.</li>
+              <li>Community link for public updates.</li>
+              <li>Booking link for live support.</li>
+              <li>Email for partnerships and longer notes.</li>
             </ul>
           </aside>
         </div>
@@ -100,19 +99,18 @@ export default function ContactPage() {
         <div className={styles.noteColumn}>
           <article className={styles.infoCard}>
             <span className={styles.status}>Response flow</span>
-            <h3>Choose the fastest path for your question.</h3>
+            <h3>Short questions belong in the active channel.</h3>
             <p>
-              Course joins, live session timings, mentorship questions, and resume reviews each have
-              a clear entry point so students do not need to chase links across old messages.
+              If the answer depends on timing, availability, or a fresh announcement, start with the
+              main WhatsApp community.
             </p>
           </article>
 
           <article className={styles.infoCard}>
             <span className={styles.miniPill}>For updates</span>
-            <h3>Start with the WhatsApp community.</h3>
+            <h3>Longer questions deserve context.</h3>
             <p>
-              The community is the fastest place to follow new courses, live rooms, review slots,
-              and practical student-focused resources from The Unfiltered IITian.
+              Use email when the message needs details, attachments, or a proper written trail.
             </p>
           </article>
         </div>

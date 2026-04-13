@@ -1,49 +1,70 @@
 import Image from "next/image";
 import styles from "./page.module.css";
-import { courseTracks, externalAnchorProps, quickActions } from "./site-config";
+import { externalAnchorProps, quickActions } from "./site-config";
 
 const communityMetrics = [
-  { value: "Live", label: "Courses and sessions around topics students care about" },
-  { value: "1:1", label: "Resume reviews and mentorship support when you need direction" },
-  { value: "TUI", label: "One WhatsApp-first community for learning, guidance, and action" },
+  { value: "Live", label: "Topic cohorts, workshops, and open discussion rooms" },
+  { value: "Direct", label: "Clear entry points for guidance and profile feedback" },
+  { value: "TUI", label: "A WhatsApp-first home for student momentum" },
 ];
 
 const learningPillars = [
   {
     id: "01",
-    title: "Live courses on focused topics",
+    title: "Signal over noise",
     description:
-      "Join topic-based live batches, workshops, and study rooms without digging through old messages.",
+      "Important links, updates, and next steps stay visible instead of disappearing inside a busy chat stream.",
   },
   {
     id: "02",
-    title: "Mentorship that answers real questions",
+    title: "Live before passive",
     description:
-      "Use live sessions for planning, college decisions, internships, career direction, and honest feedback.",
+      "The community is built around rooms where students can ask, respond, and make progress in real time.",
   },
   {
     id: "03",
-    title: "Resume and profile reviews",
+    title: "Feedback loops",
     description:
-      "Get practical review support for resumes, projects, LinkedIn profiles, and internship-ready positioning.",
+      "Questions, projects, resumes, and decisions get treated as work in progress, not one-time announcements.",
   },
 ];
 
 const heroHighlights = [
   {
-    title: "Live courses",
-    subtitle: "Topic-based cohorts, workshop alerts, notes, and study updates.",
-    badge: "Courses",
+    title: "Learn",
+    subtitle: "Find topic cohorts and workshops when new batches open.",
+    badge: "01",
   },
   {
-    title: "Mentorship",
-    subtitle: "Planning rooms for academics, college, career, and next steps.",
-    badge: "Guidance",
+    title: "Ask",
+    subtitle: "Use live rooms when you need direction or a clearer choice.",
+    badge: "02",
   },
   {
-    title: "Resume reviews",
-    subtitle: "Direct profile feedback before applications and interviews.",
-    badge: "Reviews",
+    title: "Improve",
+    subtitle: "Turn rough profiles, projects, and plans into sharper versions.",
+    badge: "03",
+  },
+];
+
+const homePaths = [
+  {
+    title: "Browse courses",
+    description: "Open Software Development, DSA, and Modern AI course groups.",
+    href: "/courses",
+    label: "View courses",
+  },
+  {
+    title: "Find live rooms",
+    description: "Check formats for office hours, open discussions, and review clinics.",
+    href: "/sessions",
+    label: "View sessions",
+  },
+  {
+    title: "Use the right link",
+    description: "Open community access, support email, and request links from one place.",
+    href: "/contact",
+    label: "Open contact",
   },
 ];
 
@@ -53,15 +74,14 @@ export default function Home() {
       <div className={styles.main}>
         <section className={styles.hero}>
           <div className={styles.heroCopy}>
-            <p className={styles.kicker}>WhatsApp-first community for students and builders.</p>
+            <p className={styles.kicker}>A focused student community with live rooms.</p>
             <h1 className={styles.title}>
-              Join live courses, mentorship, and resume reviews with{" "}
+              Move from scattered advice to steady progress with{" "}
               <span className={styles.accentText}>The Unfiltered IITian</span>
             </h1>
             <p className={styles.lede}>
-              The Unfiltered IITian brings focused learning, practical guidance, and profile
-              feedback into one active community. Use this site to find the right course, join a
-              live session, request a resume review, or enter the WhatsApp community.
+              A cleaner entry point for students who want live learning, direct guidance, and
+              useful feedback without chasing links across old messages.
             </p>
 
             <div className={styles.actions}>
@@ -74,10 +94,10 @@ export default function Home() {
             </div>
 
             <div className={styles.trustRow}>
-              <span className={styles.trustChip}>Live courses</span>
-              <span className={styles.trustChip}>Mentorship</span>
-              <span className={styles.trustChip}>Resume reviews</span>
-              <span className={styles.trustChip}>Student community</span>
+              <span className={styles.trustChip}>Topic cohorts</span>
+              <span className={styles.trustChip}>Office hours</span>
+              <span className={styles.trustChip}>Profile feedback</span>
+              <span className={styles.trustChip}>Resource links</span>
             </div>
           </div>
 
@@ -94,7 +114,7 @@ export default function Home() {
 
               <div className={styles.heroImageOverlay}>
                 <span className={styles.heroOverlayPill}>The Unfiltered IITian</span>
-                <strong>Live learning, direct guidance, and community support in one place.</strong>
+                <strong>One place to start, choose, ask, and keep moving.</strong>
               </div>
             </div>
 
@@ -122,10 +142,10 @@ export default function Home() {
         <section className={styles.featureSection} id="community">
           <div className={styles.sectionHeader}>
             <p className={styles.sectionEyebrow}>Community</p>
-            <h2>A practical place for learning, mentorship, and career prep.</h2>
+            <h2>Less link-hunting. More useful action.</h2>
             <p>
-              Students can move from interest to action quickly: join a batch, attend a live room,
-              get resume feedback, or follow updates inside the WhatsApp community.
+              The site keeps the public structure simple while the WhatsApp community stays active,
+              fast, and conversational.
             </p>
           </div>
 
@@ -155,19 +175,19 @@ export default function Home() {
 
               <div className={styles.featureBoardHeader}>
                 <span className={styles.boardEyebrow}>Community flow</span>
-                <h3>One place to follow course links, session links, and review requests.</h3>
+                <h3>Start on the website, continue the work inside the community.</h3>
               </div>
 
               <div className={styles.boardGrid}>
                 <article className={styles.boardCard}>
-                  <span className={styles.boardCardLabel}>Live learning</span>
-                  <strong>Topic courses and workshops</strong>
-                  <p>Students can find active topics, join updates, and follow learning resources.</p>
+                  <span className={styles.boardCardLabel}>Start</span>
+                  <strong>Choose the right path</strong>
+                  <p>Visitors can quickly pick courses, rooms, links, or contact without confusion.</p>
                 </article>
                 <article className={styles.boardCard}>
-                  <span className={styles.boardCardLabel}>Guidance</span>
-                  <strong>Mentorship and reviews</strong>
-                  <p>Career questions, resume feedback, and profile guidance get clear entry points.</p>
+                  <span className={styles.boardCardLabel}>Continue</span>
+                  <strong>Follow updates live</strong>
+                  <p>Fresh announcements and discussions stay where students already spend time.</p>
                 </article>
               </div>
             </aside>
@@ -176,11 +196,11 @@ export default function Home() {
 
         <section className={styles.showcaseSection}>
           <div className={styles.sectionHeader}>
-            <p className={styles.sectionEyebrow}>What You Can Join</p>
-            <h2>Live learning and honest guidance for students who want the next step.</h2>
+            <p className={styles.sectionEyebrow}>Rhythm</p>
+            <h2>Start clear, then continue where the conversation is alive.</h2>
             <p>
-              The community is built around active sessions, useful resources, and direct feedback
-              instead of scattered updates that disappear in chat.
+              The public page gives students direction, while the community carries the ongoing
+              questions, updates, and follow-through.
             </p>
           </div>
 
@@ -196,11 +216,11 @@ export default function Home() {
                 />
               </div>
               <div className={styles.showcaseCopy}>
-                <span className={styles.showcasePill}>Live courses</span>
-                <h3>Learn topics live with a community that keeps the momentum going.</h3>
+                <span className={styles.showcasePill}>Clarity</span>
+                <h3>Students should know where to go before they enter the chat flow.</h3>
                 <p>
-                  Course updates, session links, notes, and follow-up discussions stay connected so
-                  students can focus on learning instead of hunting for links.
+                  The first visit should answer the basic question fast: learn, ask, improve, or
+                  contact.
                 </p>
               </div>
             </article>
@@ -216,18 +236,18 @@ export default function Home() {
                 />
               </div>
               <div className={styles.showcaseMiniCopy}>
-                <span className={styles.showcasePill}>Resume support</span>
-                <p>Get direct feedback on resumes, projects, and profile positioning.</p>
+                <span className={styles.showcasePill}>Links</span>
+                <p>Common actions stay close, especially for students browsing from a phone.</p>
               </div>
             </article>
 
             <article className={styles.showcaseNote}>
-              <span className={styles.showcasePill}>Mentorship</span>
-              <h3>Ask better questions, make clearer decisions, and stay accountable.</h3>
+              <span className={styles.showcasePill}>Structure</span>
+              <h3>Each path supports a different student intent.</h3>
               <ul className={styles.pointList}>
-                <li>Career and academic planning sessions.</li>
-                <li>College, internship, project, and profile guidance.</li>
-                <li>Live Q and A rooms for students who want practical direction.</li>
+                <li>Learn when a topic cohort is open.</li>
+                <li>Ask when a decision needs context.</li>
+                <li>Improve when a draft needs feedback.</li>
               </ul>
             </article>
           </div>
@@ -235,37 +255,27 @@ export default function Home() {
 
         <section className={styles.section} id="courses">
           <div className={styles.sectionHeader}>
-            <p className={styles.sectionEyebrow}>Live Courses</p>
-            <h2>Choose the track that matches what you want to work on next.</h2>
+            <p className={styles.sectionEyebrow}>Start Here</p>
+            <h2>Pick the page that matches what you came to do.</h2>
             <p>
-              Courses and sessions can link to WhatsApp invites, forms, calendars, payment pages,
-              resources, or any place where you manage access.
+              The homepage stays brief so students can quickly reach the course groups and active
+              community links.
             </p>
           </div>
 
           <div className={styles.courseGrid}>
-            {courseTracks.map((course) => (
-              <article className={styles.courseCard} key={course.title}>
+            {homePaths.map((path) => (
+              <article className={styles.courseCard} key={path.title}>
                 <div className={styles.courseMeta}>
-                  <span className={styles.courseTag}>{course.tag}</span>
-                  <span className={styles.courseAudience}>{course.audience}</span>
+                  <span className={styles.courseTag}>Next step</span>
                 </div>
 
-                <h3>{course.title}</h3>
-                <p className={styles.courseDescription}>{course.description}</p>
-
-                <ul className={styles.pointList}>
-                  {course.highlights.map((point) => (
-                    <li key={point}>{point}</li>
-                  ))}
-                </ul>
+                <h3>{path.title}</h3>
+                <p className={styles.courseDescription}>{path.description}</p>
 
                 <div className={styles.cardLinks}>
-                  <a href={course.primaryHref} {...externalAnchorProps(course.primaryHref)}>
-                    {course.primaryLabel}
-                  </a>
-                  <a href={course.secondaryHref} {...externalAnchorProps(course.secondaryHref)}>
-                    {course.secondaryLabel}
+                  <a href={path.href}>
+                    {path.label}
                   </a>
                 </div>
               </article>
@@ -276,10 +286,9 @@ export default function Home() {
         <section className={styles.section} id="links">
           <div className={styles.sectionHeader}>
             <p className={styles.sectionEyebrow}>Quick Links</p>
-            <h2>Go straight to the community, courses, mentorship, or resume review.</h2>
+            <h2>Use these when you already know what you need.</h2>
             <p>
-              These links are ready for your WhatsApp invite, course interest form, session booking
-              form, resume review form, and resource vault.
+              Quick actions keep frequent tasks close without making every page say the same thing.
             </p>
           </div>
 
@@ -300,21 +309,21 @@ export default function Home() {
         <section className={styles.quoteSection}>
           <div className={styles.quoteCard}>
             <p className={styles.quoteText}>
-              &quot;Good guidance should feel direct, practical, and easy to act on.&quot;
+              &quot;A useful community should help students choose the next action quickly.&quot;
             </p>
             <p className={styles.quoteAuthor}>Built for The Unfiltered IITian</p>
           </div>
 
           <div className={styles.quoteChecklist}>
-            <h3>What students can expect</h3>
+            <h3>Choose the next action</h3>
             <p>
-              Join the community to follow new live courses, attend mentorship rooms, request
-              resume reviews, and stay close to useful student-focused opportunities.
+              Students should be able to land, understand the options, and open the right path in a
+              few seconds.
             </p>
             <ul>
-              <li>Live topic courses and workshops.</li>
-              <li>Mentorship sessions for planning and career clarity.</li>
-              <li>Resume and profile reviews before important applications.</li>
+              <li>Open a learning track.</li>
+              <li>Join a live room.</li>
+              <li>Use the contact desk.</li>
             </ul>
           </div>
         </section>

@@ -3,8 +3,6 @@ import "@fontsource/manrope/latin-400.css";
 import "@fontsource/manrope/latin-600.css";
 import "@fontsource/manrope/latin-700.css";
 import "@fontsource/manrope/latin-800.css";
-import "@fontsource/syne/latin-700.css";
-import "@fontsource/syne/latin-800.css";
 import SiteFooter from "./components/SiteFooter";
 import SiteHeader from "./components/SiteHeader";
 import "./globals.css";
@@ -15,7 +13,7 @@ export const metadata: Metadata = {
     template: "%s | The Unfiltered IITian",
   },
   description:
-    "The Unfiltered IITian is a WhatsApp-first student community for live courses, mentorship sessions, resume reviews, and practical career guidance.",
+    "The Unfiltered IITian is a WhatsApp-first student community for clearer learning paths, live guidance, and practical feedback.",
 };
 
 export default function RootLayout({

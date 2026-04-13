@@ -70,7 +70,7 @@ export default function SiteHeader() {
           <span className={styles.brandMark}>TUI</span>
           <span className={styles.brandText}>
             <strong>The Unfiltered IITian</strong>
-            <span>Courses, mentorship, and resume reviews</span>
+            <span>Student guidance and live rooms</span>
           </span>
         </Link>
 
@@ -90,9 +90,13 @@ export default function SiteHeader() {
           aria-controls="mobile-navigation"
           onClick={() => setIsMenuOpen((current) => !current)}
         >
-          <span />
-          <span />
-          <span />
+          <svg
+            className={styles.menuIcon}
+            viewBox="0 0 24 24"
+            aria-hidden="true"
+          >
+            <path d="M4 7h16M4 12h16M4 17h16" />
+          </svg>
         </button>
       </div>
 
@@ -119,7 +123,14 @@ export default function SiteHeader() {
             aria-label="Close navigation menu"
             onClick={() => setIsMenuOpen(false)}
           >
-            Close
+            <span>Close</span>
+            <svg
+              className={styles.closeIcon}
+              viewBox="0 0 24 24"
+              aria-hidden="true"
+            >
+              <path d="m6 6 12 12M18 6 6 18" />
+            </svg>
           </button>
         </div>
 

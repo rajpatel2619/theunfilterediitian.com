@@ -4,32 +4,32 @@ import styles from "../inner-page.module.css";
 
 const values = [
   {
-    title: "Practical guidance",
+    title: "Straight language",
     description:
-      "Students get direct answers, honest direction, and support that turns confusion into a next step.",
+      "The community avoids polished confusion and keeps advice direct enough for students to use.",
   },
   {
-    title: "Live learning",
+    title: "Student pace",
     description:
-      "Courses, workshops, and live rooms give students a place to learn actively instead of only collecting links.",
+      "Support is shaped around real student constraints: exams, college work, projects, and limited time.",
   },
   {
-    title: "Profile support",
+    title: "Action bias",
     description:
-      "Resume reviews, project framing, and profile feedback help students prepare for internships and career opportunities.",
+      "Every discussion should move toward a decision, a draft, a practice block, or a useful next step.",
   },
 ];
 
 const highlights = [
-  "Live courses and topic workshops inside an active WhatsApp community",
-  "Mentorship sessions for planning, career direction, and honest student questions",
-  "Resume reviews and profile feedback for internships, projects, and placements",
+  "Built for students who want honest direction, not motivational noise",
+  "Designed around small decisions that compound into visible progress",
+  "Organized enough to share publicly, flexible enough to stay community-led",
 ];
 
 export const metadata: Metadata = {
   title: "About",
   description:
-    "Learn how The Unfiltered IITian supports students through live courses, mentorship, resume reviews, and community learning.",
+    "Learn the purpose and principles behind The Unfiltered IITian student community.",
 };
 
 export default function AboutPage() {
@@ -38,10 +38,10 @@ export default function AboutPage() {
       <section className={styles.hero}>
         <div className={styles.heroCopy}>
           <span className={styles.eyebrow}>About</span>
-          <h1>A WhatsApp-first learning community for students who want practical direction.</h1>
+          <h1>Built for students who want the unfiltered version of the next step.</h1>
           <p>
-            The Unfiltered IITian brings live topic courses, mentorship sessions, resume reviews,
-            and student-focused resources into one community built around action.
+            The Unfiltered IITian exists to make student guidance clearer, more honest, and easier
+            to act on.
           </p>
         </div>
 
@@ -56,16 +56,16 @@ export default function AboutPage() {
             />
             <div className={styles.heroImageNote}>
               <span className={styles.miniPill}>Community view</span>
-              <p>Live learning and honest guidance stay close to the students who need them.</p>
+              <p>The brand is simple: less performance, more useful direction.</p>
             </div>
           </div>
 
           <aside className={styles.heroPanel}>
-            <h3>What the community helps with</h3>
+            <h3>What shapes the community</h3>
             <ul>
-              <li>Joining live courses and useful topic sessions.</li>
-              <li>Getting mentorship for study, college, and career decisions.</li>
-              <li>Improving resumes, projects, and profile presentation.</li>
+              <li>Advice that sounds like a real person said it.</li>
+              <li>Resources that point students toward action.</li>
+              <li>Conversations that respect uncertainty without staying stuck.</li>
             </ul>
           </aside>
         </div>
@@ -74,10 +74,10 @@ export default function AboutPage() {
       <section className={styles.section}>
         <div className={styles.sectionHeader}>
           <span className={styles.eyebrow}>Our Focus</span>
-          <h2>Focused support across learning, decisions, and career readiness.</h2>
+          <h2>The focus is clarity before scale.</h2>
           <p>
-            The community is for students who want structure, useful sessions, and real feedback
-            without losing momentum in scattered messages.
+            The site keeps the outside structure clean while the community keeps the inside
+            conversations alive.
           </p>
         </div>
 
@@ -95,7 +95,7 @@ export default function AboutPage() {
       <section className={styles.section}>
         <div className={styles.sectionHeader}>
           <span className={styles.eyebrow}>Why Students Join</span>
-          <h2>Students join when they want clarity, accountability, and practical feedback.</h2>
+          <h2>Students stay when the advice turns into movement.</h2>
         </div>
 
         <div className={styles.grid}>
@@ -110,10 +110,10 @@ export default function AboutPage() {
 
           <article className={styles.infoCard}>
             <span className={styles.status}>TUI</span>
-            <h3>The Unfiltered IITian keeps learning and guidance connected.</h3>
+            <h3>The public site is the front door, not the whole community.</h3>
             <p>
-              Course updates, mentorship rooms, resume review slots, and community links stay close
-              together so students can act when the opportunity is open.
+              It gives visitors the map. The real energy comes from the students, hosts, and
+              conversations that keep happening after they enter.
             </p>
           </article>
         </div>

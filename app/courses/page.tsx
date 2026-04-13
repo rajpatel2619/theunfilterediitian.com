@@ -6,7 +6,7 @@ import styles from "../inner-page.module.css";
 export const metadata: Metadata = {
   title: "Courses",
   description:
-    "Explore live courses, topic workshops, mentorship circles, and resume review clinics inside The Unfiltered IITian community.",
+    "Join The Unfiltered IITian courses for Software Development, Data Structures and Algorithms, and Modern AI.",
 };
 
 export default function CoursesPage() {
@@ -15,10 +15,10 @@ export default function CoursesPage() {
       <section className={styles.hero}>
         <div className={styles.heroCopy}>
           <span className={styles.eyebrow}>Courses</span>
-          <h1>Live courses and workshops for students who want practical progress.</h1>
+          <h1>Three focused course groups for builders and problem solvers.</h1>
           <p>
-            The Unfiltered IITian runs live sessions across different topics, from skill building
-            and study systems to mentorship, resume reviews, and career-ready profile work.
+            Join the course group that matches your current goal: software development, DSA, or
+            modern AI.
           </p>
         </div>
 
@@ -33,16 +33,16 @@ export default function CoursesPage() {
             />
             <div className={styles.heroImageNote}>
               <span className={styles.miniPill}>Live learning</span>
-              <p>Find current topics, join course updates, and follow the next useful session.</p>
+              <p>Each course has its own WhatsApp group so updates stay focused.</p>
             </div>
           </div>
 
           <aside className={styles.heroPanel}>
-            <h3>What you can join</h3>
+            <h3>Course groups</h3>
             <ul>
-              <li>Live topic courses and short workshops.</li>
-              <li>Mentorship rooms for direction and planning.</li>
-              <li>Resume review clinics for internships and placements.</li>
+              <li>Software Development for project-building skills.</li>
+              <li>Data Structures and Algorithms for coding fundamentals.</li>
+              <li>Modern AI for ML, DL, and LLM concepts.</li>
             </ul>
           </aside>
         </div>
@@ -51,10 +51,9 @@ export default function CoursesPage() {
       <section className={styles.section}>
         <div className={styles.sectionHeader}>
           <span className={styles.eyebrow}>All Courses</span>
-          <h2>Pick a track and follow the link that matches your next step.</h2>
+          <h2>Open the group for the course you want to follow.</h2>
           <p>
-            Course cards can point to WhatsApp invites, interest forms, calendars, resources, or
-            booking links depending on how each live cohort is running.
+            These buttons go directly to the dedicated WhatsApp groups you shared.
           </p>
         </div>
 
