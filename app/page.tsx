@@ -1,6 +1,6 @@
 import Image from "next/image";
 import styles from "./page.module.css";
-import { externalAnchorProps, quickActions } from "./site-config";
+import { actionLinks, externalAnchorProps, quickActions } from "./site-config";
 
 const communityMetrics = [
   { value: "Live", label: "Topic cohorts, workshops, and open discussion rooms" },
@@ -61,10 +61,10 @@ const homePaths = [
     label: "View sessions",
   },
   {
-    title: "Use the right link",
-    description: "Open community access, support email, and request links from one place.",
-    href: "/contact",
-    label: "Open contact",
+    title: "Join the community",
+    description: "Open the main WhatsApp community for updates, questions, and next steps.",
+    href: actionLinks.whatsappCommunity,
+    label: "Join community",
   },
 ];
 
@@ -182,7 +182,7 @@ export default function Home() {
                 <article className={styles.boardCard}>
                   <span className={styles.boardCardLabel}>Start</span>
                   <strong>Choose the right path</strong>
-                  <p>Visitors can quickly pick courses, rooms, links, or contact without confusion.</p>
+                  <p>Visitors can quickly pick courses, rooms, links, or community access.</p>
                 </article>
                 <article className={styles.boardCard}>
                   <span className={styles.boardCardLabel}>Continue</span>
@@ -220,7 +220,7 @@ export default function Home() {
                 <h3>Students should know where to go before they enter the chat flow.</h3>
                 <p>
                   The first visit should answer the basic question fast: learn, ask, improve, or
-                  contact.
+                  join.
                 </p>
               </div>
             </article>
@@ -274,7 +274,7 @@ export default function Home() {
                 <p className={styles.courseDescription}>{path.description}</p>
 
                 <div className={styles.cardLinks}>
-                  <a href={path.href}>
+                  <a href={path.href} {...externalAnchorProps(path.href)}>
                     {path.label}
                   </a>
                 </div>
@@ -323,7 +323,7 @@ export default function Home() {
             <ul>
               <li>Open a learning track.</li>
               <li>Join a live room.</li>
-              <li>Use the contact desk.</li>
+              <li>Join the community.</li>
             </ul>
           </div>
         </section>

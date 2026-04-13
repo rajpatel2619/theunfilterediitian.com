@@ -1,5 +1,11 @@
 import Link from "next/link";
-import { externalAnchorProps, footerQuickLinks, socialLinks } from "../site-config";
+import {
+  externalAnchorProps,
+  footerBottomLinks,
+  footerQuickLinks,
+  socialLinks,
+} from "../site-config";
+import LinkIcon from "./LinkIcon";
 import styles from "./site-chrome.module.css";
 
 export default function SiteFooter() {
@@ -24,7 +30,8 @@ export default function SiteFooter() {
               {footerQuickLinks.map((link) => (
                 <li key={link.href}>
                   <Link className={styles.footerLink} href={link.href}>
-                    {link.label}
+                    <LinkIcon className={styles.linkIcon} name={link.icon} />
+                    <span>{link.label}</span>
                   </Link>
                 </li>
               ))}
@@ -41,7 +48,8 @@ export default function SiteFooter() {
                     href={link.href}
                     {...externalAnchorProps(link.href)}
                   >
-                    {link.label}
+                    <LinkIcon className={styles.linkIcon} name={link.icon} />
+                    <span>{link.label}</span>
                   </a>
                 </li>
               ))}
@@ -52,15 +60,24 @@ export default function SiteFooter() {
         <div className={styles.footerBottom}>
           <span>© 2026 The Unfiltered IITian. Built for students who want honest guidance.</span>
           <div className={styles.footerBottomLinks}>
-            <Link className={styles.footerLink} href="/courses">
-              Explore courses
-            </Link>
-            <Link className={styles.footerLink} href="/sessions">
-              View sessions
-            </Link>
-            <Link className={styles.footerLink} href="/contact">
-              Contact us
-            </Link>
+            {footerBottomLinks.map((link) => (
+              link.href.startsWith("http") ? (
+                <a
+                  className={styles.footerLink}
+                  href={link.href}
+                  key={link.href}
+                  {...externalAnchorProps(link.href)}
+                >
+                  <LinkIcon className={styles.linkIcon} name={link.icon} />
+                  <span>{link.label}</span>
+                </a>
+              ) : (
+                <Link className={styles.footerLink} href={link.href} key={link.href}>
+                  <LinkIcon className={styles.linkIcon} name={link.icon} />
+                  <span>{link.label}</span>
+                </Link>
+              )
+            ))}
           </div>
         </div>
       </div>

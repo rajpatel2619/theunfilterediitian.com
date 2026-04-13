@@ -35,9 +35,9 @@ Available link variables:
 - `NEXT_PUBLIC_INSTAGRAM_URL`
 - `NEXT_PUBLIC_YOUTUBE_URL`
 - `NEXT_PUBLIC_LINKEDIN_URL`
-- `NEXT_PUBLIC_CONTACT_EMAIL`
+- `NEXT_PUBLIC_LEETCODE_PLAYLIST_URL`
 
-If a link is not configured, the site falls back to the closest internal page instead of sending visitors to a dead demo URL.
+If a mentorship or resume review link is not configured, the site sends visitors to the main WhatsApp community.
 
 ## Useful Commands
 

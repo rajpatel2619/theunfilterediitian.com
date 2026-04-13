@@ -1,5 +1,3 @@
-export const contactEmail = process.env.NEXT_PUBLIC_CONTACT_EMAIL ?? "hello@theunfilterediitian.com";
-
 const defaultLinks = {
   website: "https://theunfilterediitian.com/",
   whatsappCommunity: "https://chat.whatsapp.com/LwVTLSs0I4A4byXPtVKsMy?mode=gi_t",
@@ -9,6 +7,11 @@ const defaultLinks = {
   instagram: "https://www.instagram.com/the_unfiltered_iitian/",
   youtube: "https://www.youtube.com/@theunfilterediitian",
   linkedin: "https://in.linkedin.com/in/theunfilterediitian",
+  leetcodePlaylist: "https://www.youtube.com/playlist?list=PLvUq-YEK35km4EJyyLyNHHUK7dqayf_kO",
+  mentorshipLive:
+    "https://www.youtube.com/watch?v=wt2LwpHYC6k&list=PLvUq-YEK35klGgbeYLLpNvaBynjfsdznf&index=1",
+  sweRoadmap:
+    "https://www.youtube.com/watch?v=gK38GGahO1U&list=PLvUq-YEK35klGgbeYLLpNvaBynjfsdznf&index=2",
 };
 
 export const actionLinks = {
@@ -20,40 +23,59 @@ export const actionLinks = {
     process.env.NEXT_PUBLIC_DSA_URL ?? defaultLinks.dataStructuresAlgorithms,
   modernAi: process.env.NEXT_PUBLIC_MODERN_AI_URL ?? defaultLinks.modernAi,
   liveCourseUpdates: process.env.NEXT_PUBLIC_LIVE_COURSES_URL ?? defaultLinks.whatsappCommunity,
-  mentorshipBooking: process.env.NEXT_PUBLIC_MENTORSHIP_URL ?? "/sessions",
-  resumeReviewBooking: process.env.NEXT_PUBLIC_RESUME_REVIEW_URL ?? "/contact",
+  mentorshipBooking: process.env.NEXT_PUBLIC_MENTORSHIP_URL ?? defaultLinks.whatsappCommunity,
+  resumeReviewBooking: process.env.NEXT_PUBLIC_RESUME_REVIEW_URL ?? defaultLinks.whatsappCommunity,
   resourcesVault: process.env.NEXT_PUBLIC_RESOURCES_URL ?? "/courses",
   instagram: process.env.NEXT_PUBLIC_INSTAGRAM_URL ?? defaultLinks.instagram,
   youtube: process.env.NEXT_PUBLIC_YOUTUBE_URL ?? defaultLinks.youtube,
   linkedin: process.env.NEXT_PUBLIC_LINKEDIN_URL ?? defaultLinks.linkedin,
-  email: `mailto:${contactEmail}`,
+  leetcodePlaylist:
+    process.env.NEXT_PUBLIC_LEETCODE_PLAYLIST_URL ?? defaultLinks.leetcodePlaylist,
+  mentorshipLive: defaultLinks.mentorshipLive,
+  sweRoadmap: defaultLinks.sweRoadmap,
 };
 
+export type IconName =
+  | "home"
+  | "about"
+  | "courses"
+  | "sessions"
+  | "contributors"
+  | "website"
+  | "whatsapp"
+  | "instagram"
+  | "youtube"
+  | "linkedin";
+
 export const navigationLinks = [
-  { href: "/", label: "Home" },
-  { href: "/about", label: "About" },
-  { href: "/courses", label: "Courses" },
-  { href: "/sessions", label: "Sessions" },
-  { href: "/contributors", label: "Contributors" },
-  { href: "/contact", label: "Contact" },
-];
+  { href: "/", label: "Home", icon: "home" },
+  { href: "/about", label: "About", icon: "about" },
+  { href: "/courses", label: "Courses", icon: "courses" },
+  { href: "/sessions", label: "Sessions", icon: "sessions" },
+  { href: "/contributors", label: "Contributors", icon: "contributors" },
+] satisfies Array<{ href: string; label: string; icon: IconName }>;
+
+export const footerBottomLinks = [
+  { href: "/courses", label: "Explore courses", icon: "courses" },
+  { href: "/sessions", label: "View sessions", icon: "sessions" },
+  { href: actionLinks.whatsappCommunity, label: "Join community", icon: "whatsapp" },
+] satisfies Array<{ href: string; label: string; icon: IconName }>;
 
 export const socialLinks = [
-  { href: actionLinks.website, label: "Website" },
-  { href: actionLinks.whatsappCommunity, label: "WhatsApp" },
-  { href: actionLinks.instagram, label: "Instagram" },
-  { href: actionLinks.youtube, label: "YouTube" },
-  { href: actionLinks.linkedin, label: "LinkedIn" },
-];
+  { href: actionLinks.website, label: "Website", icon: "website" },
+  { href: actionLinks.whatsappCommunity, label: "WhatsApp", icon: "whatsapp" },
+  { href: actionLinks.instagram, label: "Instagram", icon: "instagram" },
+  { href: actionLinks.youtube, label: "YouTube", icon: "youtube" },
+  { href: actionLinks.linkedin, label: "LinkedIn", icon: "linkedin" },
+] satisfies Array<{ href: string; label: string; icon: IconName }>;
 
 export const footerQuickLinks = [
-  { href: "/", label: "Home" },
-  { href: "/about", label: "About" },
-  { href: "/courses", label: "Courses" },
-  { href: "/sessions", label: "Sessions" },
-  { href: "/contributors", label: "Contributors" },
-  { href: "/contact", label: "Contact" },
-];
+  { href: "/", label: "Home", icon: "home" },
+  { href: "/about", label: "About", icon: "about" },
+  { href: "/courses", label: "Courses", icon: "courses" },
+  { href: "/sessions", label: "Sessions", icon: "sessions" },
+  { href: "/contributors", label: "Contributors", icon: "contributors" },
+] satisfies Array<{ href: string; label: string; icon: IconName }>;
 
 export const courseTracks = [
   {
@@ -66,8 +88,8 @@ export const courseTracks = [
     highlights: ["Project structure", "Frontend and backend basics", "Build-to-ship thinking"],
     primaryLabel: "Join Software Development",
     primaryHref: actionLinks.softwareDevelopment,
-    secondaryLabel: "Contact for details",
-    secondaryHref: "/contact",
+    secondaryLabel: "Join community",
+    secondaryHref: actionLinks.whatsappCommunity,
   },
   {
     title: "Data Structures and Algorithms",
@@ -92,10 +114,29 @@ export const courseTracks = [
     highlights: ["ML foundations", "Deep learning concepts", "LLM workflows"],
     primaryLabel: "Join Modern AI",
     primaryHref: actionLinks.modernAi,
-    secondaryLabel: "Ask a question",
-    secondaryHref: "/contact",
+    secondaryLabel: "Join community",
+    secondaryHref: actionLinks.whatsappCommunity,
   },
 ];
+
+export const recordedPlaylists = [
+  {
+    title: "Leetcode Daily Problems",
+    tag: "Recorded playlist",
+    description:
+      "A YouTube playlist for students who want steady problem-solving practice beyond live batches.",
+    href: actionLinks.leetcodePlaylist,
+    label: "Watch playlist",
+    thumbnail: "https://i.ytimg.com/vi/m_fwT0EZPYA/hqdefault.jpg",
+  },
+] satisfies Array<{
+  title: string;
+  tag: string;
+  description: string;
+  href: string;
+  label: string;
+  thumbnail: string;
+}>;
 
 export const quickActions = [
   {
@@ -148,6 +189,34 @@ export const sessionTypes = [
       "Structured feedback on resumes, profile positioning, projects, achievements, and recruiter-facing clarity.",
   },
 ];
+
+export const previousSessions = [
+  {
+    title: "Real Talk, Tech & Career Advice: Weekly Mentorship LIVE with Raj Patel",
+    tag: "Mentorship live",
+    description:
+      "A recorded mentorship conversation for students looking for practical tech and career direction.",
+    href: actionLinks.mentorshipLive,
+    label: "Watch session",
+    thumbnail: "https://i.ytimg.com/vi/wt2LwpHYC6k/hqdefault.jpg",
+  },
+  {
+    title: "From IIT to Industry | Real SWE Roadmap for Engineering Students",
+    tag: "SWE roadmap",
+    description:
+      "A previous session focused on moving from engineering college learning into industry-ready software work.",
+    href: actionLinks.sweRoadmap,
+    label: "Watch session",
+    thumbnail: "https://i.ytimg.com/vi/gK38GGahO1U/hqdefault.jpg",
+  },
+] satisfies Array<{
+  title: string;
+  tag: string;
+  description: string;
+  href: string;
+  label: string;
+  thumbnail: string;
+}>;
 
 export const contributorRoles = [
   {

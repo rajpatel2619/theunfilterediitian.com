@@ -1,12 +1,12 @@
 import Image from "next/image";
 import type { Metadata } from "next";
-import { courseTracks, externalAnchorProps } from "../site-config";
+import { courseTracks, externalAnchorProps, recordedPlaylists } from "../site-config";
 import styles from "../inner-page.module.css";
 
 export const metadata: Metadata = {
   title: "Courses",
   description:
-    "Join The Unfiltered IITian courses for Software Development, Data Structures and Algorithms, and Modern AI.",
+    "Join The Unfiltered IITian courses and recorded lecture playlists for Software Development, DSA, Modern AI, and problem solving.",
 };
 
 export default function CoursesPage() {
@@ -50,8 +50,8 @@ export default function CoursesPage() {
 
       <section className={styles.section}>
         <div className={styles.sectionHeader}>
-          <span className={styles.eyebrow}>All Courses</span>
-          <h2>Open the group for the course you want to follow.</h2>
+          <span className={styles.eyebrow}>Different Courses</span>
+          <h2>Open the live course group for the topic you want to follow.</h2>
           <p>
             These buttons go directly to the dedicated WhatsApp groups you shared.
           </p>
@@ -88,6 +88,49 @@ export default function CoursesPage() {
                   {...externalAnchorProps(course.secondaryHref)}
                 >
                   {course.secondaryLabel}
+                </a>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className={styles.section}>
+        <div className={styles.sectionHeader}>
+          <span className={styles.eyebrow}>Recorded Lectures</span>
+          <h2>Use recorded playlists when you want to keep learning after live rooms.</h2>
+          <p>
+            Start with the available playlist and keep it close for regular practice.
+          </p>
+        </div>
+
+        <div className={styles.mediaGrid}>
+          {recordedPlaylists.map((playlist) => (
+            <article className={styles.mediaCard} key={playlist.title}>
+              <a
+                className={styles.mediaThumb}
+                href={playlist.href}
+                {...externalAnchorProps(playlist.href)}
+              >
+                <Image
+                  src={playlist.thumbnail}
+                  alt={`${playlist.title} playlist thumbnail`}
+                  fill
+                  className={styles.mediaImage}
+                  sizes="(max-width: 1080px) 100vw, 38vw"
+                />
+              </a>
+
+              <div className={styles.mediaBody}>
+                <span className={styles.miniPill}>{playlist.tag}</span>
+                <h3>{playlist.title}</h3>
+                <p>{playlist.description}</p>
+                <a
+                  className={styles.primaryLink}
+                  href={playlist.href}
+                  {...externalAnchorProps(playlist.href)}
+                >
+                  {playlist.label}
                 </a>
               </div>
             </article>

@@ -66,7 +66,7 @@
 .nav {
   display: flex;
   justify-content: center;
-  gap: 12px;
+  gap: 6px;
   flex-wrap: wrap;
 }
 
@@ -75,13 +75,17 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  gap: 8px;
   min-height: 42px;
   padding: 0 16px;
   border-radius: 999px;
+  white-space: nowrap;
   transition: transform 180ms ease, border-color 180ms ease, background-color 180ms ease;
 }
 
 .navLink {
+  gap: 6px;
+  padding: 0 12px;
   color: var(--muted);
   border: 1px solid transparent;
 }
@@ -131,13 +135,29 @@
   flex: 0 0 auto;
 }
 
+.linkIcon {
+  width: 16px;
+  height: 16px;
+  flex: 0 0 auto;
+  color: currentColor;
+}
+
 .menuIcon path,
-.closeIcon path {
+.closeIcon path,
+.linkIcon path,
+.linkIcon circle,
+.linkIcon rect {
   fill: none;
   stroke: currentColor;
   stroke-linecap: round;
   stroke-linejoin: round;
   stroke-width: 2.2;
+}
+
+.linkIcon path,
+.linkIcon circle,
+.linkIcon rect {
+  stroke-width: 1.85;
 }
 
 .mobileBackdrop {
@@ -235,13 +255,14 @@
   display: flex;
   min-height: 48px;
   align-items: center;
-  justify-content: space-between;
+  gap: 10px;
   padding: 0 14px;
   border-radius: 8px;
   font-weight: 800;
 }
 
 .mobileNavLink {
+  justify-content: flex-start;
   border: 1px solid var(--stroke);
   background: rgba(255, 255, 255, 0.72);
   color: var(--muted-soft);
@@ -325,6 +346,8 @@
 .footerLink,
 .socialLink {
   display: inline-flex;
+  align-items: center;
+  gap: 8px;
   width: fit-content;
   color: var(--muted-soft);
   transition: transform 180ms ease, color 180ms ease;

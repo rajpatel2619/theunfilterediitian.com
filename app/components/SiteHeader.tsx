@@ -2,13 +2,16 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
-import { navigationLinks } from "../site-config";
+import { useEffect, useRef, useState } from "react";
+import { actionLinks, externalAnchorProps, navigationLinks } from "../site-config";
+import LinkIcon from "./LinkIcon";
 import styles from "./site-chrome.module.css";
 
 export default function SiteHeader() {
   const pathname = usePathname();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const drawerRef = useRef<HTMLElement>(null);
+  const menuButtonRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
     if (!isMenuOpen) {
@@ -24,11 +27,43 @@ export default function SiteHeader() {
       }
     };
 
+    const handlePointerDown = (event: PointerEvent) => {
+      const target = event.target as Node | null;
+
+      if (drawerRef.current?.contains(target) || menuButtonRef.current?.contains(target)) {
+        return;
+      }
+
+      setIsMenuOpen(false);
+    };
+
+    const handleOutsideScroll = (event: Event) => {
+      const target = event.target as Node | null;
+
+      if (drawerRef.current?.contains(target)) {
+        return;
+      }
+
+      setIsMenuOpen(false);
+    };
+
+    const handleWindowScroll = () => {
+      setIsMenuOpen(false);
+    };
+
     window.addEventListener("keydown", handleKeyDown);
+    document.addEventListener("pointerdown", handlePointerDown, { capture: true });
+    document.addEventListener("wheel", handleOutsideScroll, { capture: true, passive: true });
+    document.addEventListener("touchmove", handleOutsideScroll, { capture: true, passive: true });
+    window.addEventListener("scroll", handleWindowScroll, { passive: true });
 
     return () => {
       document.body.style.overflow = previousOverflow;
       window.removeEventListener("keydown", handleKeyDown);
+      document.removeEventListener("pointerdown", handlePointerDown, { capture: true });
+      document.removeEventListener("wheel", handleOutsideScroll, { capture: true });
+      document.removeEventListener("touchmove", handleOutsideScroll, { capture: true });
+      window.removeEventListener("scroll", handleWindowScroll);
     };
   }, [isMenuOpen]);
 
@@ -42,7 +77,8 @@ export default function SiteHeader() {
         href={link.href}
         aria-current={isActive ? "page" : undefined}
       >
-        {link.label}
+        <LinkIcon className={styles.linkIcon} name={link.icon} />
+        <span>{link.label}</span>
       </Link>
     );
   });
@@ -58,7 +94,8 @@ export default function SiteHeader() {
         aria-current={isActive ? "page" : undefined}
         onClick={() => setIsMenuOpen(false)}
       >
-        {link.label}
+        <LinkIcon className={styles.linkIcon} name={link.icon} />
+        <span>{link.label}</span>
       </Link>
     );
   });
@@ -78,11 +115,17 @@ export default function SiteHeader() {
           {navLinks}
         </nav>
 
-        <Link className={styles.cta} href="/contact">
-          Join community
-        </Link>
+        <a
+          className={styles.cta}
+          href={actionLinks.whatsappCommunity}
+          {...externalAnchorProps(actionLinks.whatsappCommunity)}
+        >
+          <LinkIcon className={styles.linkIcon} name="whatsapp" />
+          <span>Join community</span>
+        </a>
 
         <button
+          ref={menuButtonRef}
           className={styles.menuButton}
           type="button"
           aria-label={isMenuOpen ? "Close navigation menu" : "Open navigation menu"}
@@ -108,6 +151,7 @@ export default function SiteHeader() {
       />
 
       <aside
+        ref={drawerRef}
         className={`${styles.mobileDrawer} ${isMenuOpen ? styles.mobileDrawerOpen : ""}`}
         id="mobile-navigation"
         aria-hidden={!isMenuOpen}
@@ -138,13 +182,15 @@ export default function SiteHeader() {
           {mobileNavLinks}
         </nav>
 
-        <Link
+        <a
           className={styles.drawerCta}
-          href="/contact"
+          href={actionLinks.whatsappCommunity}
+          {...externalAnchorProps(actionLinks.whatsappCommunity)}
           onClick={() => setIsMenuOpen(false)}
         >
-          Join community
-        </Link>
+          <LinkIcon className={styles.linkIcon} name="whatsapp" />
+          <span>Join community</span>
+        </a>
       </aside>
     </header>
   );

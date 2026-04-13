@@ -1,6 +1,11 @@
 import Image from "next/image";
 import type { Metadata } from "next";
-import { actionLinks, externalAnchorProps, sessionTypes } from "../site-config";
+import {
+  actionLinks,
+  externalAnchorProps,
+  previousSessions,
+  sessionTypes,
+} from "../site-config";
 import styles from "../inner-page.module.css";
 
 const sessionNotes = [
@@ -77,6 +82,50 @@ export default function SessionsPage() {
 
       <section className={styles.section}>
         <div className={styles.sectionHeader}>
+          <span className={styles.eyebrow}>Previous Sessions</span>
+          <h2>Watch recent recordings before you join the next live room.</h2>
+          <p>
+            These recordings give students a quick way to catch up on mentorship and roadmap
+            conversations.
+          </p>
+        </div>
+
+        <div className={styles.mediaGrid}>
+          {previousSessions.map((session) => (
+            <article className={styles.mediaCard} key={session.title}>
+              <a
+                className={styles.mediaThumb}
+                href={session.href}
+                {...externalAnchorProps(session.href)}
+              >
+                <Image
+                  src={session.thumbnail}
+                  alt={`${session.title} session thumbnail`}
+                  fill
+                  className={styles.mediaImage}
+                  sizes="(max-width: 1080px) 100vw, 38vw"
+                />
+              </a>
+
+              <div className={styles.mediaBody}>
+                <span className={styles.miniPill}>{session.tag}</span>
+                <h3>{session.title}</h3>
+                <p>{session.description}</p>
+                <a
+                  className={styles.secondaryLink}
+                  href={session.href}
+                  {...externalAnchorProps(session.href)}
+                >
+                  {session.label}
+                </a>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className={styles.section}>
+        <div className={styles.sectionHeader}>
           <span className={styles.eyebrow}>Before Joining</span>
           <h2>Come prepared so the live time stays useful.</h2>
         </div>
@@ -96,14 +145,14 @@ export default function SessionsPage() {
             href={actionLinks.mentorshipBooking}
             {...externalAnchorProps(actionLinks.mentorshipBooking)}
           >
-            Book mentorship
+            Join community for upcoming sessions
           </a>
           <a
             className={styles.secondaryLink}
             href={actionLinks.resumeReviewBooking}
             {...externalAnchorProps(actionLinks.resumeReviewBooking)}
           >
-            Request resume review
+            Join community for review clinics
           </a>
         </div>
       </section>
