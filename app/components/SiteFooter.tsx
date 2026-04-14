@@ -29,10 +29,21 @@ export default function SiteFooter() {
             <ul className={styles.footerList}>
               {footerQuickLinks.map((link) => (
                 <li key={link.href}>
-                  <Link className={styles.footerLink} href={link.href}>
-                    <LinkIcon className={styles.linkIcon} name={link.icon} />
-                    <span>{link.label}</span>
-                  </Link>
+                  {link.href.startsWith("http") ? (
+                    <a
+                      className={styles.footerLink}
+                      href={link.href}
+                      {...externalAnchorProps(link.href)}
+                    >
+                      <LinkIcon className={styles.linkIcon} name={link.icon} />
+                      <span>{link.label}</span>
+                    </a>
+                  ) : (
+                    <Link className={styles.footerLink} href={link.href}>
+                      <LinkIcon className={styles.linkIcon} name={link.icon} />
+                      <span>{link.label}</span>
+                    </Link>
+                  )}
                 </li>
               ))}
             </ul>

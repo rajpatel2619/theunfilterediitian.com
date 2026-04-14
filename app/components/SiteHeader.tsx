@@ -69,6 +69,25 @@ export default function SiteHeader() {
 
   const navLinks = navigationLinks.map((link) => {
     const isActive = pathname === link.href;
+    const linkContent = (
+      <>
+        <LinkIcon className={styles.linkIcon} name={link.icon} />
+        <span>{link.label}</span>
+      </>
+    );
+
+    if (link.href.startsWith("http")) {
+      return (
+        <a
+          key={link.href}
+          className={styles.navLink}
+          href={link.href}
+          {...externalAnchorProps(link.href)}
+        >
+          {linkContent}
+        </a>
+      );
+    }
 
     return (
       <Link
@@ -77,14 +96,33 @@ export default function SiteHeader() {
         href={link.href}
         aria-current={isActive ? "page" : undefined}
       >
-        <LinkIcon className={styles.linkIcon} name={link.icon} />
-        <span>{link.label}</span>
+        {linkContent}
       </Link>
     );
   });
 
   const mobileNavLinks = navigationLinks.map((link) => {
     const isActive = pathname === link.href;
+    const linkContent = (
+      <>
+        <LinkIcon className={styles.linkIcon} name={link.icon} />
+        <span>{link.label}</span>
+      </>
+    );
+
+    if (link.href.startsWith("http")) {
+      return (
+        <a
+          key={link.href}
+          className={styles.mobileNavLink}
+          href={link.href}
+          {...externalAnchorProps(link.href)}
+          onClick={() => setIsMenuOpen(false)}
+        >
+          {linkContent}
+        </a>
+      );
+    }
 
     return (
       <Link
@@ -94,8 +132,7 @@ export default function SiteHeader() {
         aria-current={isActive ? "page" : undefined}
         onClick={() => setIsMenuOpen(false)}
       >
-        <LinkIcon className={styles.linkIcon} name={link.icon} />
-        <span>{link.label}</span>
+        {linkContent}
       </Link>
     );
   });

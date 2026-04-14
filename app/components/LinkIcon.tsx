@@ -8,13 +8,6 @@ const icons: Record<IconName, ReactNode> = {
       <path d="M9 21v-6h6v6" />
     </>
   ),
-  about: (
-    <>
-      <circle cx="12" cy="12" r="8.5" />
-      <path d="M12 11v5" />
-      <circle cx="12" cy="8" r=".6" />
-    </>
-  ),
   courses: (
     <>
       <path d="M5 5.5h9.5A3.5 3.5 0 0 1 18 9v10H8.5A3.5 3.5 0 0 0 5 15.5z" />
@@ -22,7 +15,7 @@ const icons: Record<IconName, ReactNode> = {
       <path d="M9 8h5" />
     </>
   ),
-  sessions: (
+  events: (
     <>
       <rect x="4" y="5" width="16" height="15" rx="2.5" />
       <path d="M8 3v4M16 3v4M4 9h16" />
@@ -35,6 +28,13 @@ const icons: Record<IconName, ReactNode> = {
       <circle cx="16.5" cy="9.5" r="2.4" />
       <path d="M3.8 19a5.2 5.2 0 0 1 10.4 0" />
       <path d="M14.2 16.2A4.5 4.5 0 0 1 20.5 19" />
+    </>
+  ),
+  jobs: (
+    <>
+      <rect x="4" y="7" width="16" height="13" rx="2.5" />
+      <path d="M9 7V5.5A1.5 1.5 0 0 1 10.5 4h3A1.5 1.5 0 0 1 15 5.5V7" />
+      <path d="M4 12h16M10 12v2h4v-2" />
     </>
   ),
   website: (

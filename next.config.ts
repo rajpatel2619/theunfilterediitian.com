@@ -10,6 +10,20 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  async redirects() {
+    return [
+      {
+        source: "/sessions",
+        destination: "/events",
+        permanent: false,
+      },
+      {
+        source: "/sessions/playlists/:playlistId",
+        destination: "/events/playlists/:playlistId",
+        permanent: false,
+      },
+    ];
+  },
 };
 
 export default nextConfig;

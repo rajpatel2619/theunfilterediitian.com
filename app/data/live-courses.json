@@ -1,0 +1,38 @@
+[
+  {
+    "title": "Software Development",
+    "tag": "Live course",
+    "status": "Open intake",
+    "audience": "Students who want to build real software projects",
+    "description": "A practical track for learning how software is planned, built, shipped, and improved through real development habits.",
+    "highlights": ["Project structure", "Frontend and backend basics", "Build-to-ship thinking"],
+    "primaryLabel": "Join Software Development",
+    "linkKey": "softwareDevelopment",
+    "secondaryLabel": "Join community",
+    "secondaryLinkKey": "whatsappCommunity"
+  },
+  {
+    "title": "Data Structures and Algorithms",
+    "tag": "Problem solving",
+    "status": "Open intake",
+    "audience": "Students preparing for interviews and stronger coding fundamentals",
+    "description": "A structured room for sharpening patterns, implementation discipline, and the problem-solving rhythm needed for technical rounds.",
+    "highlights": ["Core data structures", "Pattern practice", "Interview-style thinking"],
+    "primaryLabel": "Join DSA",
+    "linkKey": "dataStructuresAlgorithms",
+    "secondaryLabel": "Join community",
+    "secondaryHref": "whatsappCommunity"
+  },
+  {
+    "title": "Modern AI - ML, DL and LLMs",
+    "tag": "AI track",
+    "status": "Open intake",
+    "audience": "Students who want a modern path into applied AI",
+    "description": "A guided track for understanding machine learning, deep learning, and LLMs with a practical view of how modern AI is used.",
+    "highlights": ["ML foundations", "Deep learning concepts", "LLM workflows"],
+    "primaryLabel": "Join Modern AI",
+    "linkKey": "modernAi",
+    "secondaryLabel": "Join community",
+    "secondaryLinkKey": "whatsappCommunity"
+  }
+]

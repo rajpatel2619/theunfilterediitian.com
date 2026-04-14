@@ -93,9 +93,25 @@
   border: 1px solid var(--stroke);
 }
 
+.playlistHeroImageFrame {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 16 / 9;
+  min-height: 340px;
+  border: 1px solid var(--stroke);
+  border-radius: 8px;
+  background: #101916;
+}
+
 .heroImage {
   object-fit: cover;
   object-position: center;
+}
+
+.containedImage {
+  object-fit: contain;
+  object-position: center;
+  background: #101916;
 }
 
 .heroImageNote {
@@ -108,6 +124,20 @@
   border-radius: 8px;
   background: linear-gradient(180deg, rgba(8, 12, 24, 0.5) 0%, rgba(8, 12, 24, 0.82) 100%);
   backdrop-filter: blur(12px);
+}
+
+.playlistHeroMeta {
+  display: grid;
+  gap: 12px;
+  padding: 16px;
+  border: 1px solid var(--stroke);
+  border-radius: 8px;
+  background: #ffffff;
+}
+
+.playlistHeroMeta p {
+  color: var(--muted);
+  line-height: 1.6;
 }
 
 .heroPanel {
@@ -144,7 +174,8 @@
 
 .grid,
 .timeline,
-.mediaGrid {
+.mediaGrid,
+.videoGrid {
   display: grid;
   gap: 20px;
 }
@@ -155,6 +186,8 @@
 
 .card,
 .mediaCard,
+.playlistCard,
+.videoCard,
 .timelineCard,
 .noteCard,
 .infoCard {
@@ -166,6 +199,8 @@
 
 .card,
 .mediaBody,
+.playlistCard,
+.videoCard,
 .noteCard,
 .infoCard {
   display: grid;
@@ -195,6 +230,8 @@
 
 .card h3,
 .mediaCard h3,
+.playlistCard h3,
+.videoCard h3,
 .timelineCard h3,
 .noteCard h3,
 .infoCard h3 {
@@ -230,6 +267,13 @@
 .linkRow {
   display: flex;
   flex-wrap: wrap;
+  gap: 12px;
+  margin-top: auto;
+}
+
+.liveCourseActions {
+  display: grid;
+  grid-template-columns: minmax(0, 7fr) minmax(0, 3fr);
   gap: 12px;
   margin-top: auto;
 }
@@ -270,19 +314,78 @@
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
+.videoGrid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-items: stretch;
+}
+
 .mediaCard {
   display: grid;
   grid-template-columns: minmax(220px, 0.85fr) minmax(0, 1fr);
   gap: 22px;
 }
 
-.mediaThumb {
+.playlistCard {
+  overflow: hidden;
+  padding: 0;
+}
+
+.videoCard {
+  grid-template-rows: auto 1fr;
+  align-content: stretch;
+  height: 100%;
+}
+
+.videoCardBody {
+  display: grid;
+  grid-template-rows: auto auto 1fr auto;
+  align-self: stretch;
+  gap: 16px;
+  height: 100%;
+}
+
+.videoCardBody p {
+  color: var(--muted);
+  line-height: 1.8;
+}
+
+.mediaThumb,
+.videoThumb {
   position: relative;
   display: block;
   overflow: hidden;
-  min-height: 220px;
   border-radius: 8px;
   background: var(--surface-soft);
+}
+
+.mediaThumb {
+  aspect-ratio: 16 / 9;
+  min-height: 220px;
+}
+
+.videoThumb {
+  aspect-ratio: 16 / 9;
+  min-height: 180px;
+  background: #101916;
+}
+
+.videoWatchLink {
+  display: inline-flex;
+  align-self: end;
+  min-height: 50px;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  background: linear-gradient(135deg, var(--accent) 0%, var(--accent-strong) 100%);
+  color: #ffffff;
+  font-weight: 800;
+  box-shadow: 0 14px 30px rgba(15, 143, 127, 0.22);
+  transition: transform 180ms ease, background-color 180ms ease;
+}
+
+.videoWatchLink:hover {
+  transform: translateY(-2px);
 }
 
 .mediaImage {
@@ -293,9 +396,138 @@
   align-content: start;
 }
 
+.playlistCard .mediaBody {
+  padding: 22px;
+}
+
+.playlistActions {
+  display: grid;
+  grid-template-columns: minmax(0, 4fr) minmax(52px, 1fr);
+  gap: 10px;
+  margin-top: auto;
+}
+
+.playlistPrimaryAction,
+.playlistYoutubeAction {
+  display: inline-flex;
+  min-height: 50px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  font-weight: 800;
+  transition: transform 180ms ease, background-color 180ms ease, border-color 180ms ease;
+}
+
+.playlistPrimaryAction {
+  background: linear-gradient(135deg, var(--accent) 0%, var(--accent-strong) 100%);
+  color: #ffffff;
+  box-shadow: 0 14px 30px rgba(15, 143, 127, 0.22);
+}
+
+.playlistYoutubeAction {
+  border: 1px solid var(--stroke);
+  background: #ffffff;
+  color: var(--accent-warm);
+}
+
+.playlistPrimaryAction:hover,
+.playlistYoutubeAction:hover {
+  transform: translateY(-2px);
+}
+
+.youtubeActionIcon {
+  width: 24px;
+  height: 24px;
+  flex: 0 0 auto;
+}
+
+.youtubeActionIcon rect,
+.youtubeActionIcon path {
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.9;
+}
+
+.mediaList {
+  display: grid;
+  gap: 8px;
+  padding-top: 6px;
+}
+
+.mediaListTitle {
+  color: var(--muted);
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.mediaListLink {
+  color: var(--muted-soft);
+  font-weight: 700;
+  line-height: 1.45;
+  transition: color 180ms ease, transform 180ms ease;
+}
+
+.mediaListLink:hover {
+  color: var(--text);
+  transform: translateX(3px);
+}
+
+.contributorImageFrame {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 16 / 10;
+  min-height: 220px;
+  border: 1px solid var(--stroke);
+  border-radius: 8px;
+  background: var(--surface-soft);
+}
+
+.contributorImage {
+  object-fit: cover;
+  object-position: center;
+}
+
+.contributorEmail {
+  width: fit-content;
+  color: var(--accent-strong);
+  font-weight: 800;
+  overflow-wrap: anywhere;
+}
+
+.contributorBlock {
+  display: grid;
+  gap: 8px;
+}
+
+.contributorActions {
+  margin-top: auto;
+}
+
+.contributorActions .primaryLink {
+  width: 100%;
+}
+
 .mediaBody .primaryLink,
 .mediaBody .secondaryLink {
   width: fit-content;
+}
+
+.emptyState {
+  display: grid;
+  gap: 10px;
+  padding: 28px;
+  border: 1px solid var(--stroke);
+  border-radius: 8px;
+  background: #ffffff;
+}
+
+.emptyState p {
+  color: var(--muted);
+  line-height: 1.7;
 }
 
 .timelineCard {
@@ -314,7 +546,8 @@
   .grid,
   .timeline,
   .mediaGrid,
-  .mediaCard {
+  .mediaCard,
+  .videoGrid {
     grid-template-columns: 1fr;
   }
 }
@@ -329,7 +562,11 @@
   .section,
   .card,
   .mediaCard,
+  .playlistCard,
   .mediaThumb,
+  .videoCard,
+  .videoThumb,
+  .emptyState,
   .timelineCard,
   .noteCard,
   .infoCard,
@@ -382,6 +619,8 @@
   .sectionHeader p,
   .card p,
   .mediaBody p,
+  .videoCardBody p,
+  .emptyState p,
   .noteCard p,
   .timelineText,
   .infoCard p,
@@ -394,6 +633,11 @@
     border-radius: 8px;
   }
 
+  .playlistHeroImageFrame {
+    min-height: 250px;
+    border-radius: 8px;
+  }
+
   .heroImageNote {
     right: 12px;
     bottom: 12px;
@@ -402,9 +646,18 @@
     border-radius: 8px;
   }
 
+  .playlistHeroMeta {
+    gap: 10px;
+    padding: 14px;
+    border-radius: 8px;
+  }
+
   .heroPanel,
   .card,
   .mediaCard,
+  .playlistCard,
+  .videoCard,
+  .emptyState,
   .timelineCard,
   .noteCard,
   .infoCard {
@@ -414,12 +667,15 @@
 
   .grid,
   .timeline,
-  .mediaGrid {
+  .mediaGrid,
+  .videoGrid {
     gap: 14px;
   }
 
   .card h3,
   .mediaCard h3,
+  .playlistCard h3,
+  .videoCard h3,
   .timelineCard h3,
   .noteCard h3,
   .infoCard h3 {
@@ -428,6 +684,11 @@
 
   .linkRow {
     flex-direction: column;
+    gap: 10px;
+  }
+
+  .liveCourseActions {
+    grid-template-columns: 1fr;
     gap: 10px;
   }
 
@@ -443,8 +704,30 @@
     min-height: 190px;
   }
 
+  .contributorImageFrame {
+    min-height: 190px;
+  }
+
+  .playlistCard .mediaBody {
+    padding: 18px;
+  }
+
+  .playlistActions {
+    grid-template-columns: minmax(0, 4fr) minmax(48px, 1fr);
+  }
+
+  .playlistPrimaryAction,
+  .playlistYoutubeAction {
+    min-height: 48px;
+  }
+
+  .videoThumb {
+    min-height: 180px;
+  }
+
   .mediaBody .primaryLink,
-  .mediaBody .secondaryLink {
+  .mediaBody .secondaryLink,
+  .contributorActions .primaryLink {
     width: 100%;
   }
 
@@ -476,7 +759,19 @@
     min-height: 230px;
   }
 
+  .playlistHeroImageFrame {
+    min-height: 230px;
+  }
+
   .mediaThumb {
     min-height: 170px;
+  }
+
+  .contributorImageFrame {
+    min-height: 170px;
+  }
+
+  .videoThumb {
+    min-height: 160px;
   }
 }

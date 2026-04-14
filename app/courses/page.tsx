@@ -1,6 +1,9 @@
 import Image from "next/image";
+import Link from "next/link";
 import type { Metadata } from "next";
-import { courseTracks, externalAnchorProps, recordedPlaylists } from "../site-config";
+import { getLiveCourses } from "../lib/live-courses";
+import { getRecordedLecturePlaylists } from "../lib/youtube";
+import { externalAnchorProps } from "../site-config";
 import styles from "../inner-page.module.css";
 
 export const metadata: Metadata = {
@@ -9,7 +12,10 @@ export const metadata: Metadata = {
     "Join The Unfiltered IITian courses and recorded lecture playlists for Software Development, DSA, Modern AI, and problem solving.",
 };
 
-export default function CoursesPage() {
+export default async function CoursesPage() {
+  const liveCourses = getLiveCourses();
+  const playlists = await getRecordedLecturePlaylists();
+
   return (
     <div className={styles.page}>
       <section className={styles.hero}>
@@ -50,15 +56,16 @@ export default function CoursesPage() {
 
       <section className={styles.section}>
         <div className={styles.sectionHeader}>
-          <span className={styles.eyebrow}>Different Courses</span>
+          <span className={styles.eyebrow}>Live Courses</span>
           <h2>Open the live course group for the topic you want to follow.</h2>
           <p>
-            These buttons go directly to the dedicated WhatsApp groups you shared.
+            These live courses use dedicated WhatsApp groups for announcements, links, and cohort
+            updates.
           </p>
         </div>
 
         <div className={styles.grid}>
-          {courseTracks.map((course) => (
+          {liveCourses.map((course) => (
             <article className={styles.card} key={course.title}>
               <div className={styles.tagRow}>
                 <span className={styles.tag}>{course.tag}</span>
@@ -74,7 +81,7 @@ export default function CoursesPage() {
                 ))}
               </ul>
 
-              <div className={styles.linkRow}>
+              <div className={styles.liveCourseActions}>
                 <a
                   className={styles.primaryLink}
                   href={course.primaryHref}
@@ -97,20 +104,19 @@ export default function CoursesPage() {
 
       <section className={styles.section}>
         <div className={styles.sectionHeader}>
-          <span className={styles.eyebrow}>Recorded Lectures</span>
-          <h2>Use recorded playlists when you want to keep learning after live rooms.</h2>
+          <span className={styles.eyebrow}>Other Courses</span>
+          <h2>Browse recorded playlists from The Unfiltered IITian YouTube channel.</h2>
           <p>
-            Start with the available playlist and keep it close for regular practice.
+            Each playlist opens into a detail page with the videos and direct YouTube watch links.
           </p>
         </div>
 
         <div className={styles.mediaGrid}>
-          {recordedPlaylists.map((playlist) => (
-            <article className={styles.mediaCard} key={playlist.title}>
-              <a
+          {playlists.map((playlist) => (
+            <article className={styles.playlistCard} key={playlist.title}>
+              <Link
                 className={styles.mediaThumb}
-                href={playlist.href}
-                {...externalAnchorProps(playlist.href)}
+                href={`/courses/playlists/${playlist.id}`}
               >
                 <Image
                   src={playlist.thumbnail}
@@ -119,19 +125,42 @@ export default function CoursesPage() {
                   className={styles.mediaImage}
                   sizes="(max-width: 1080px) 100vw, 38vw"
                 />
-              </a>
+              </Link>
 
               <div className={styles.mediaBody}>
-                <span className={styles.miniPill}>{playlist.tag}</span>
+                <div className={styles.tagRow}>
+                  <span className={styles.miniPill}>{playlist.tag}</span>
+                  {playlist.videoCount ? (
+                    <span className={styles.status}>{playlist.videoCount}</span>
+                  ) : null}
+                </div>
                 <h3>{playlist.title}</h3>
                 <p>{playlist.description}</p>
-                <a
-                  className={styles.primaryLink}
-                  href={playlist.href}
-                  {...externalAnchorProps(playlist.href)}
-                >
-                  {playlist.label}
-                </a>
+                <div className={styles.playlistActions}>
+                  <Link
+                    className={styles.playlistPrimaryAction}
+                    href={`/courses/playlists/${playlist.id}`}
+                  >
+                    View playlist
+                  </Link>
+                  <a
+                    className={styles.playlistYoutubeAction}
+                    href={playlist.href}
+                    aria-label={`Open ${playlist.title} on YouTube`}
+                    title="Open on YouTube"
+                    {...externalAnchorProps(playlist.href)}
+                  >
+                    <svg
+                      className={styles.youtubeActionIcon}
+                      viewBox="0 0 24 24"
+                      aria-hidden="true"
+                    >
+                      <rect x="3.5" y="6.5" width="17" height="11" rx="3" />
+                      <path d="m10.5 9.5 5 2.5-5 2.5z" />
+                      <path d="M17 5h2v2M19 5l-4 4" />
+                    </svg>
+                  </a>
+                </div>
               </div>
             </article>
           ))}

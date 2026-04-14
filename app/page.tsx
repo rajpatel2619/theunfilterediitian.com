@@ -57,8 +57,8 @@ const homePaths = [
   {
     title: "Find live rooms",
     description: "Check formats for office hours, open discussions, and review clinics.",
-    href: "/sessions",
-    label: "View sessions",
+    href: "/events",
+    label: "View events",
   },
   {
     title: "Join the community",

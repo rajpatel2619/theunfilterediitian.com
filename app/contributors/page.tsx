@@ -1,6 +1,7 @@
 import Image from "next/image";
 import type { Metadata } from "next";
-import { contributorRoles } from "../site-config";
+import { getContributors } from "../lib/contributors";
+import { externalAnchorProps } from "../site-config";
 import styles from "../inner-page.module.css";
 
 export const metadata: Metadata = {
@@ -10,6 +11,8 @@ export const metadata: Metadata = {
 };
 
 export default function ContributorsPage() {
+  const contributors = getContributors();
+
   return (
     <div className={styles.page}>
       <section className={styles.hero}>
@@ -52,18 +55,55 @@ export default function ContributorsPage() {
           <span className={styles.eyebrow}>Team</span>
           <h2>The community works better when responsibilities are visible.</h2>
           <p>
-            Replace these role cards with real names whenever you want the site to show individual
-            contributors.
+            Mentors bring different strengths into the community so students can find clearer
+            guidance, sharper feedback, and practical next steps.
           </p>
         </div>
 
         <div className={styles.grid}>
-          {contributorRoles.map((contributor) => (
+          {contributors.map((contributor) => (
             <article className={styles.card} key={contributor.name}>
-              <span className={styles.tag}>Contributor</span>
+              {contributor.image ? (
+                <div className={styles.contributorImageFrame}>
+                  <Image
+                    src={contributor.image}
+                    alt={`${contributor.name} mentor photo`}
+                    fill
+                    className={styles.contributorImage}
+                    sizes="(max-width: 1080px) 100vw, 40vw"
+                  />
+                </div>
+              ) : null}
+
+              <span className={styles.tag}>Mentor</span>
               <h3>{contributor.name}</h3>
-              <span className={styles.miniPill}>{contributor.role}</span>
-              <p>{contributor.description}</p>
+              {contributor.email ? (
+                <a className={styles.contributorEmail} href={`mailto:${contributor.email}`}>
+                  {contributor.email}
+                </a>
+              ) : null}
+
+              <div className={styles.contributorBlock}>
+                <span className={styles.mediaListTitle}>Bio</span>
+                <p>{contributor.bio}</p>
+              </div>
+
+              <div className={styles.contributorBlock}>
+                <span className={styles.mediaListTitle}>Expertise</span>
+                <p>{contributor.expertiseDescription}</p>
+              </div>
+
+              {contributor.linkedinUrl ? (
+                <div className={styles.contributorActions}>
+                  <a
+                    className={styles.primaryLink}
+                    href={contributor.linkedinUrl}
+                    {...externalAnchorProps(contributor.linkedinUrl)}
+                  >
+                    Connect on LinkedIn
+                  </a>
+                </div>
+              ) : null}
             </article>
           ))}
         </div>

@@ -7,7 +7,10 @@ const defaultLinks = {
   instagram: "https://www.instagram.com/the_unfiltered_iitian/",
   youtube: "https://www.youtube.com/@theunfilterediitian",
   linkedin: "https://in.linkedin.com/in/theunfilterediitian",
+  jobs: "https://www.careerszone.in/",
   leetcodePlaylist: "https://www.youtube.com/playlist?list=PLvUq-YEK35km4EJyyLyNHHUK7dqayf_kO",
+  mentorshipPlaylist:
+    "https://www.youtube.com/playlist?list=PLvUq-YEK35klGgbeYLLpNvaBynjfsdznf",
   mentorshipLive:
     "https://www.youtube.com/watch?v=wt2LwpHYC6k&list=PLvUq-YEK35klGgbeYLLpNvaBynjfsdznf&index=1",
   sweRoadmap:
@@ -29,18 +32,20 @@ export const actionLinks = {
   instagram: process.env.NEXT_PUBLIC_INSTAGRAM_URL ?? defaultLinks.instagram,
   youtube: process.env.NEXT_PUBLIC_YOUTUBE_URL ?? defaultLinks.youtube,
   linkedin: process.env.NEXT_PUBLIC_LINKEDIN_URL ?? defaultLinks.linkedin,
+  jobs: process.env.NEXT_PUBLIC_JOBS_URL ?? defaultLinks.jobs,
   leetcodePlaylist:
     process.env.NEXT_PUBLIC_LEETCODE_PLAYLIST_URL ?? defaultLinks.leetcodePlaylist,
+  mentorshipPlaylist: defaultLinks.mentorshipPlaylist,
   mentorshipLive: defaultLinks.mentorshipLive,
   sweRoadmap: defaultLinks.sweRoadmap,
 };
 
 export type IconName =
   | "home"
-  | "about"
   | "courses"
-  | "sessions"
+  | "events"
   | "contributors"
+  | "jobs"
   | "website"
   | "whatsapp"
   | "instagram"
@@ -49,15 +54,15 @@ export type IconName =
 
 export const navigationLinks = [
   { href: "/", label: "Home", icon: "home" },
-  { href: "/about", label: "About", icon: "about" },
   { href: "/courses", label: "Courses", icon: "courses" },
-  { href: "/sessions", label: "Sessions", icon: "sessions" },
+  { href: "/events", label: "Events", icon: "events" },
   { href: "/contributors", label: "Contributors", icon: "contributors" },
+  { href: actionLinks.jobs, label: "Jobs", icon: "jobs" },
 ] satisfies Array<{ href: string; label: string; icon: IconName }>;
 
 export const footerBottomLinks = [
   { href: "/courses", label: "Explore courses", icon: "courses" },
-  { href: "/sessions", label: "View sessions", icon: "sessions" },
+  { href: "/events", label: "View events", icon: "events" },
   { href: actionLinks.whatsappCommunity, label: "Join community", icon: "whatsapp" },
 ] satisfies Array<{ href: string; label: string; icon: IconName }>;
 
@@ -71,56 +76,34 @@ export const socialLinks = [
 
 export const footerQuickLinks = [
   { href: "/", label: "Home", icon: "home" },
-  { href: "/about", label: "About", icon: "about" },
   { href: "/courses", label: "Courses", icon: "courses" },
-  { href: "/sessions", label: "Sessions", icon: "sessions" },
+  { href: "/events", label: "Events", icon: "events" },
   { href: "/contributors", label: "Contributors", icon: "contributors" },
+  { href: actionLinks.jobs, label: "Jobs", icon: "jobs" },
 ] satisfies Array<{ href: string; label: string; icon: IconName }>;
 
-export const courseTracks = [
-  {
-    title: "Software Development",
-    tag: "Live course",
-    status: "Open intake",
-    audience: "Students who want to build real software projects",
-    description:
-      "A practical track for learning how software is planned, built, shipped, and improved through real development habits.",
-    highlights: ["Project structure", "Frontend and backend basics", "Build-to-ship thinking"],
-    primaryLabel: "Join Software Development",
-    primaryHref: actionLinks.softwareDevelopment,
-    secondaryLabel: "Join community",
-    secondaryHref: actionLinks.whatsappCommunity,
-  },
-  {
-    title: "Data Structures and Algorithms",
-    tag: "Problem solving",
-    status: "Open intake",
-    audience: "Students preparing for interviews and stronger coding fundamentals",
-    description:
-      "A structured room for sharpening patterns, implementation discipline, and the problem-solving rhythm needed for technical rounds.",
-    highlights: ["Core data structures", "Pattern practice", "Interview-style thinking"],
-    primaryLabel: "Join DSA",
-    primaryHref: actionLinks.dataStructuresAlgorithms,
-    secondaryLabel: "See live rooms",
-    secondaryHref: "/sessions",
-  },
-  {
-    title: "Modern AI - ML, DL and LLMs",
-    tag: "AI track",
-    status: "Open intake",
-    audience: "Students who want a modern path into applied AI",
-    description:
-      "A guided track for understanding machine learning, deep learning, and LLMs with a practical view of how modern AI is used.",
-    highlights: ["ML foundations", "Deep learning concepts", "LLM workflows"],
-    primaryLabel: "Join Modern AI",
-    primaryHref: actionLinks.modernAi,
-    secondaryLabel: "Join community",
-    secondaryHref: actionLinks.whatsappCommunity,
-  },
-];
+export type MediaLink = {
+  title: string;
+  tag: string;
+  description: string;
+  href: string;
+  label: string;
+  thumbnail: string;
+};
+
+export type VideoLink = MediaLink & {
+  id: string;
+};
+
+export type PlaylistLink = MediaLink & {
+  id: string;
+  videoCount?: string;
+  videos?: VideoLink[];
+};
 
 export const recordedPlaylists = [
   {
+    id: "PLvUq-YEK35km4EJyyLyNHHUK7dqayf_kO",
     title: "Leetcode Daily Problems",
     tag: "Recorded playlist",
     description:
@@ -128,15 +111,25 @@ export const recordedPlaylists = [
     href: actionLinks.leetcodePlaylist,
     label: "Watch playlist",
     thumbnail: "https://i.ytimg.com/vi/m_fwT0EZPYA/hqdefault.jpg",
+    videoCount: "Recorded lectures",
+    videos: [],
   },
-] satisfies Array<{
-  title: string;
-  tag: string;
-  description: string;
-  href: string;
-  label: string;
-  thumbnail: string;
-}>;
+] satisfies PlaylistLink[];
+
+export const eventPlaylists = [
+  {
+    id: "PLvUq-YEK35klGgbeYLLpNvaBynjfsdznf",
+    title: "Sunday Bi-weekly Mentorship Events | The UnFiltered Talks",
+    tag: "Live events playlist",
+    description:
+      "A YouTube playlist for mentorship events, roadmap conversations, and live student guidance.",
+    href: actionLinks.mentorshipPlaylist,
+    label: "Watch playlist",
+    thumbnail: "https://i.ytimg.com/vi/wt2LwpHYC6k/hqdefault.jpg",
+    videoCount: "Live recordings",
+    videos: [],
+  },
+] satisfies PlaylistLink[];
 
 export const quickActions = [
   {
@@ -169,7 +162,7 @@ export const quickActions = [
   },
 ];
 
-export const sessionTypes = [
+export const eventTypes = [
   {
     time: "Live",
     title: "Open Discussion Rooms",
@@ -190,60 +183,28 @@ export const sessionTypes = [
   },
 ];
 
-export const previousSessions = [
+export const previousEvents = [
   {
+    id: "wt2LwpHYC6k",
     title: "Real Talk, Tech & Career Advice: Weekly Mentorship LIVE with Raj Patel",
     tag: "Mentorship live",
     description:
       "A recorded mentorship conversation for students looking for practical tech and career direction.",
     href: actionLinks.mentorshipLive,
-    label: "Watch session",
+    label: "Watch event",
     thumbnail: "https://i.ytimg.com/vi/wt2LwpHYC6k/hqdefault.jpg",
   },
   {
+    id: "gK38GGahO1U",
     title: "From IIT to Industry | Real SWE Roadmap for Engineering Students",
     tag: "SWE roadmap",
     description:
-      "A previous session focused on moving from engineering college learning into industry-ready software work.",
+      "A previous event focused on moving from engineering college learning into industry-ready software work.",
     href: actionLinks.sweRoadmap,
-    label: "Watch session",
+    label: "Watch event",
     thumbnail: "https://i.ytimg.com/vi/gK38GGahO1U/hqdefault.jpg",
   },
-] satisfies Array<{
-  title: string;
-  tag: string;
-  description: string;
-  href: string;
-  label: string;
-  thumbnail: string;
-}>;
-
-export const contributorRoles = [
-  {
-    name: "Lead Mentor",
-    role: "Community direction and live mentorship",
-    description:
-      "Shapes the session calendar, guides learners through career and academic decisions, and keeps the community focused on useful outcomes.",
-  },
-  {
-    name: "Course Host",
-    role: "Cohorts and workshops",
-    description:
-      "Runs live topic sessions, coordinates materials, and helps students move from passive notes to active practice.",
-  },
-  {
-    name: "Resume Reviewer",
-    role: "Profile and career feedback",
-    description:
-      "Reviews resumes, project descriptions, LinkedIn profiles, and internship-facing narratives with direct practical feedback.",
-  },
-  {
-    name: "Community Support",
-    role: "Onboarding, links, and student help",
-    description:
-      "Keeps joining links, resource access, session reminders, and student questions moving smoothly inside the community.",
-  },
-];
+] satisfies VideoLink[];
 
 export function externalAnchorProps(href: string) {
   if (!href.startsWith("http")) {
