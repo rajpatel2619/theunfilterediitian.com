@@ -1,6 +1,6 @@
 import Image from "next/image";
 import styles from "./page.module.css";
-import { actionLinks, externalAnchorProps, quickActions } from "./site-config";
+import { actionLinks, externalAnchorProps } from "./site-config";
 
 const communityMetrics = [
   { value: "Live", label: "Topic cohorts, workshops, and open discussion rooms" },
@@ -278,29 +278,6 @@ export default function Home() {
                     {path.label}
                   </a>
                 </div>
-              </article>
-            ))}
-          </div>
-        </section>
-
-        <section className={styles.section} id="links">
-          <div className={styles.sectionHeader}>
-            <p className={styles.sectionEyebrow}>Quick Links</p>
-            <h2>Use these when you already know what you need.</h2>
-            <p>
-              Quick actions keep frequent tasks close without making every page say the same thing.
-            </p>
-          </div>
-
-          <div className={styles.linkGrid}>
-            {quickActions.map((link) => (
-              <article className={styles.linkCard} key={link.title}>
-                <span className={styles.linkPill}>Pinned access</span>
-                <h3>{link.title}</h3>
-                <p>{link.description}</p>
-                <a href={link.href} {...externalAnchorProps(link.href)}>
-                  {link.label}
-                </a>
               </article>
             ))}
           </div>

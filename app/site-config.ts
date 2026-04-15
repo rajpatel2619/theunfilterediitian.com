@@ -116,21 +116,6 @@ export const recordedPlaylists = [
   },
 ] satisfies PlaylistLink[];
 
-export const eventPlaylists = [
-  {
-    id: "PLvUq-YEK35klGgbeYLLpNvaBynjfsdznf",
-    title: "Sunday Bi-weekly Mentorship Events | The UnFiltered Talks",
-    tag: "Live events playlist",
-    description:
-      "A YouTube playlist for mentorship events, roadmap conversations, and live student guidance.",
-    href: actionLinks.mentorshipPlaylist,
-    label: "Watch playlist",
-    thumbnail: "https://i.ytimg.com/vi/wt2LwpHYC6k/hqdefault.jpg",
-    videoCount: "Live recordings",
-    videos: [],
-  },
-] satisfies PlaylistLink[];
-
 export const quickActions = [
   {
     title: "Community Entry",

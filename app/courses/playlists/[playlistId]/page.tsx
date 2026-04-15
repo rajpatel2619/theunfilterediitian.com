@@ -54,7 +54,7 @@ export default async function PlaylistPage({ params }: PlaylistPageProps) {
 
   return (
     <div className={styles.page}>
-      <section className={styles.hero}>
+      <section className={`${styles.hero} ${styles.playlistHero}`}>
         <div className={styles.heroCopy}>
           <span className={styles.eyebrow}>Playlist</span>
           <h1>{playlist.title}</h1>

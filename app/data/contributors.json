@@ -1,9 +1,9 @@
 [
   {
-    "name": "The Unfiltered IITian Mentor",
+    "name": "Raj Patel",
     "email": "",
-    "image": "/images/community-hero.jpg",
-    "bio": "Guides learners through career decisions, course choices, profile improvements, and practical next steps.",
+    "image": "/images/raj.png",
+    "bio": "IITian, Mentor, and Incoming SDE at Samsung.",
     "expertiseDescription": "Software development mentorship, resume reviews, student roadmaps, and community guidance.",
     "linkedinUrl": "https://in.linkedin.com/in/theunfilterediitian"
   }

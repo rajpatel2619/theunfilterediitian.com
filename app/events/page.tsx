@@ -1,19 +1,9 @@
 import Image from "next/image";
-import Link from "next/link";
 import type { Metadata } from "next";
-import { getEventPlaylists, getPreviousEventVideos } from "../lib/youtube";
-import {
-  actionLinks,
-  eventTypes,
-  externalAnchorProps,
-} from "../site-config";
+import { getNextLiveSessions } from "../lib/next-live-sessions";
+import { getPreviousEventVideos } from "../lib/youtube";
+import { eventTypes, externalAnchorProps } from "../site-config";
 import styles from "../inner-page.module.css";
-
-const eventNotes = [
-  "Bring one clear question so the live room can move faster.",
-  "Use review clinics when you want feedback on a specific document or profile.",
-  "Check the latest announcement before joining because slots can change by week.",
-];
 
 export const metadata: Metadata = {
   title: "Events",
@@ -22,10 +12,8 @@ export const metadata: Metadata = {
 };
 
 export default async function EventsPage() {
-  const [eventPlaylists, previousEvents] = await Promise.all([
-    getEventPlaylists(),
-    getPreviousEventVideos(),
-  ]);
+  const nextLiveSessions = getNextLiveSessions();
+  const previousEvents = await getPreviousEventVideos();
 
   return (
     <div className={styles.page}>
@@ -67,61 +55,57 @@ export default async function EventsPage() {
 
       <section className={styles.section}>
         <div className={styles.sectionHeader}>
-          <span className={styles.eyebrow}>Live Playlists</span>
-          <h2>Watch live event playlists in one place.</h2>
+          <span className={styles.eyebrow}>Next Live Sessions</span>
+          <h2>Track next live sessions in one place.</h2>
           <p>
-            Mentorship and live discussion recordings stay here, separate from course playlists.
+            Keep the upcoming mentorship details here, separate from course playlists and past recordings.
           </p>
         </div>
 
         <div className={styles.mediaGrid}>
-          {eventPlaylists.map((playlist) => (
-            <article className={styles.playlistCard} key={playlist.id}>
-              <Link
+          {nextLiveSessions.map((session) => (
+            <article className={styles.playlistCard} key={session.title}>
+              <a
                 className={styles.mediaThumb}
-                href={`/events/playlists/${playlist.id}`}
+                href={session.youtubeHref}
+                aria-label={`Open ${session.title}`}
+                {...externalAnchorProps(session.youtubeHref)}
               >
                 <Image
-                  src={playlist.thumbnail}
-                  alt={`${playlist.title} playlist thumbnail`}
+                  src={session.thumbnail}
+                  alt={`${session.title} session thumbnail`}
                   fill
                   className={styles.mediaImage}
                   sizes="(max-width: 1080px) 100vw, 38vw"
                 />
-              </Link>
+              </a>
 
               <div className={styles.mediaBody}>
                 <div className={styles.tagRow}>
-                  <span className={styles.miniPill}>{playlist.tag}</span>
-                  {playlist.videoCount ? (
-                    <span className={styles.status}>{playlist.videoCount}</span>
+                  <span className={styles.miniPill}>{session.tag}</span>
+                  {session.status ? (
+                    <span className={styles.status}>{session.status}</span>
                   ) : null}
                 </div>
-                <h3>{playlist.title}</h3>
-                <p>{playlist.description}</p>
-                <div className={styles.playlistActions}>
-                  <Link
-                    className={styles.playlistPrimaryAction}
-                    href={`/events/playlists/${playlist.id}`}
-                  >
-                    View playlist
-                  </Link>
+                <h3>{session.title}</h3>
+                <p>{session.description}</p>
+                <div className={styles.sessionSchedule}>
+                  <div className={styles.sessionScheduleItem}>
+                    <span>Date</span>
+                    <strong>{session.date}</strong>
+                  </div>
+                  <div className={styles.sessionScheduleItem}>
+                    <span>Time</span>
+                    <strong>{session.time}</strong>
+                  </div>
+                </div>
+                <div className={styles.sessionActions}>
                   <a
-                    className={styles.playlistYoutubeAction}
-                    href={playlist.href}
-                    aria-label={`Open ${playlist.title} on YouTube`}
-                    title="Open on YouTube"
-                    {...externalAnchorProps(playlist.href)}
+                    className={styles.primaryLink}
+                    href={session.youtubeHref}
+                    {...externalAnchorProps(session.youtubeHref)}
                   >
-                    <svg
-                      className={styles.youtubeActionIcon}
-                      viewBox="0 0 24 24"
-                      aria-hidden="true"
-                    >
-                      <rect x="3.5" y="6.5" width="17" height="11" rx="3" />
-                      <path d="m10.5 9.5 5 2.5-5 2.5z" />
-                      <path d="M17 5h2v2M19 5l-4 4" />
-                    </svg>
+                    {session.youtubeLabel}
                   </a>
                 </div>
               </div>
@@ -163,7 +147,7 @@ export default async function EventsPage() {
 
         <div className={styles.mediaGrid}>
           {previousEvents.map((event) => (
-            <article className={styles.mediaCard} key={event.title}>
+            <article className={styles.playlistCard} key={event.title}>
               <a
                 className={styles.mediaThumb}
                 href={event.href}
@@ -195,38 +179,6 @@ export default async function EventsPage() {
         </div>
       </section>
 
-      <section className={styles.section}>
-        <div className={styles.sectionHeader}>
-          <span className={styles.eyebrow}>Before Joining</span>
-          <h2>Come prepared so the live time stays useful.</h2>
-        </div>
-
-        <div className={styles.grid}>
-          {eventNotes.map((note) => (
-            <article className={styles.noteCard} key={note}>
-              <span className={styles.miniPill}>Quick tip</span>
-              <p>{note}</p>
-            </article>
-          ))}
-        </div>
-
-        <div className={styles.linkRow}>
-          <a
-            className={styles.primaryLink}
-            href={actionLinks.mentorshipBooking}
-            {...externalAnchorProps(actionLinks.mentorshipBooking)}
-          >
-            Join community for upcoming events
-          </a>
-          <a
-            className={styles.secondaryLink}
-            href={actionLinks.resumeReviewBooking}
-            {...externalAnchorProps(actionLinks.resumeReviewBooking)}
-          >
-            Join community for review clinics
-          </a>
-        </div>
-      </section>
     </div>
   );
 }

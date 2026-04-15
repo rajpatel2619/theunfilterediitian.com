@@ -62,30 +62,30 @@ export default function ContributorsPage() {
 
         <div className={styles.grid}>
           {contributors.map((contributor) => (
-            <article className={styles.card} key={contributor.name}>
-              {contributor.image ? (
-                <div className={styles.contributorImageFrame}>
-                  <Image
-                    src={contributor.image}
-                    alt={`${contributor.name} mentor photo`}
-                    fill
-                    className={styles.contributorImage}
-                    sizes="(max-width: 1080px) 100vw, 40vw"
-                  />
+            <article className={`${styles.card} ${styles.contributorCard}`} key={contributor.name}>
+              <div className={styles.contributorHeader}>
+                {contributor.image ? (
+                  <div className={styles.contributorAvatarFrame}>
+                    <Image
+                      src={contributor.image}
+                      alt={`${contributor.name} mentor photo`}
+                      fill
+                      className={styles.contributorAvatar}
+                      sizes="(max-width: 1080px) 100vw, 128px"
+                    />
+                  </div>
+                ) : null}
+
+                <div className={styles.contributorIntroText}>
+                  <span className={styles.tag}>Mentor</span>
+                  <h3>{contributor.name}</h3>
+                  {contributor.email ? (
+                    <a className={styles.contributorEmail} href={`mailto:${contributor.email}`}>
+                      {contributor.email}
+                    </a>
+                  ) : null}
+                  <p className={styles.contributorBio}>{contributor.bio}</p>
                 </div>
-              ) : null}
-
-              <span className={styles.tag}>Mentor</span>
-              <h3>{contributor.name}</h3>
-              {contributor.email ? (
-                <a className={styles.contributorEmail} href={`mailto:${contributor.email}`}>
-                  {contributor.email}
-                </a>
-              ) : null}
-
-              <div className={styles.contributorBlock}>
-                <span className={styles.mediaListTitle}>Bio</span>
-                <p>{contributor.bio}</p>
               </div>
 
               <div className={styles.contributorBlock}>
@@ -94,15 +94,13 @@ export default function ContributorsPage() {
               </div>
 
               {contributor.linkedinUrl ? (
-                <div className={styles.contributorActions}>
-                  <a
-                    className={styles.primaryLink}
-                    href={contributor.linkedinUrl}
-                    {...externalAnchorProps(contributor.linkedinUrl)}
-                  >
-                    Connect on LinkedIn
-                  </a>
-                </div>
+                <a
+                  className={`${styles.primaryLink} ${styles.contributorAction}`}
+                  href={contributor.linkedinUrl}
+                  {...externalAnchorProps(contributor.linkedinUrl)}
+                >
+                  Connect on LinkedIn
+                </a>
               ) : null}
             </article>
           ))}

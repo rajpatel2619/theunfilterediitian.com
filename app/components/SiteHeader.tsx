@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
@@ -141,10 +142,19 @@ export default function SiteHeader() {
     <header className={styles.headerWrap}>
       <div className={styles.headerInner}>
         <Link className={styles.brand} href="/">
-          <span className={styles.brandMark}>TUI</span>
+          <span className={styles.brandMark}>
+            <Image
+              src="/images/raj.png"
+              alt="The Unfiltered IITian logo"
+              width={108}
+              height={96}
+              className={styles.brandLogo}
+              priority
+            />
+          </span>
           <span className={styles.brandText}>
             <strong>The Unfiltered IITian</strong>
-            <span>Student guidance and live rooms</span>
+            <span>Cut the Noise. Build What Matters!</span>
           </span>
         </Link>
 

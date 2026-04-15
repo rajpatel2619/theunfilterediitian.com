@@ -3,20 +3,24 @@ import "server-only";
 import {
   previousEvents,
   recordedPlaylists,
-  eventPlaylists,
   type PlaylistLink,
   type VideoLink,
 } from "../site-config";
+import { nextLiveSessions } from "./next-live-sessions";
 
 const YOUTUBE_API_BASE = "https://www.googleapis.com/youtube/v3";
 const YOUTUBE_REVALIDATE_SECONDS = 21600;
 const YOUTUBE_CHANNEL_HANDLE = "@theunfilterediitian";
 const MAX_CHANNEL_PLAYLISTS = 200;
 const MAX_PLAYLIST_VIDEOS = 200;
-const eventPlaylistIds = new Set(eventPlaylists.map((playlist) => playlist.id));
+const nextLiveSessionIds = new Set(
+  nextLiveSessions
+    .map((session) => session.id)
+    .filter((id): id is string => Boolean(id)),
+);
 
 export function isEventPlaylistId(playlistId: string) {
-  return eventPlaylistIds.has(playlistId);
+  return nextLiveSessionIds.has(playlistId);
 }
 
 type YouTubeThumbnail = {
@@ -237,7 +241,7 @@ export async function getRecordedLecturePlaylists(): Promise<PlaylistLink[]> {
   } while (pageToken && playlistItems.length < MAX_CHANNEL_PLAYLISTS);
 
   const playlists = playlistItems
-    .filter((playlist) => playlist.id && !eventPlaylistIds.has(playlist.id))
+    .filter((playlist) => playlist.id && !nextLiveSessionIds.has(playlist.id))
     .map((playlist) => mapPlaylist(playlist))
     .filter((playlist): playlist is PlaylistLink => Boolean(playlist));
 
@@ -245,11 +249,11 @@ export async function getRecordedLecturePlaylists(): Promise<PlaylistLink[]> {
 }
 
 export async function getEventPlaylists(): Promise<PlaylistLink[]> {
-  return getFallbackPlaylists(eventPlaylists);
+  return [];
 }
 
 export async function getPlaylistDetails(playlistId: string): Promise<PlaylistLink | null> {
-  const fallback = [...recordedPlaylists, ...eventPlaylists].find(
+  const fallback = recordedPlaylists.find(
     (playlist) => playlist.id === playlistId,
   );
   const playlistResponse = await fetchFromYouTube<YouTubeListResponse<YouTubePlaylist>>(
@@ -303,7 +307,7 @@ export async function getPlaylistVideos(playlistId: string): Promise<VideoLink[]
     return videos;
   }
 
-  const fallback = [...recordedPlaylists, ...eventPlaylists].find(
+  const fallback = recordedPlaylists.find(
     (playlist) => playlist.id === playlistId,
   );
   return fallback?.videos ?? [];

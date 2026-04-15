@@ -11,7 +11,7 @@
 .section {
   border: 1px solid var(--stroke);
   border-radius: 8px;
-  background: linear-gradient(180deg, #ffffff 0%, var(--surface-soft) 100%);
+  background: linear-gradient(180deg, var(--surface) 0%, var(--surface-soft) 100%);
   box-shadow: var(--panel-shadow);
 }
 
@@ -24,6 +24,11 @@
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(360px, 0.92fr);
   gap: 30px;
+}
+
+.playlistHero {
+  grid-template-columns: minmax(0, 1fr);
+  gap: 24px;
 }
 
 .eyebrow,
@@ -42,9 +47,9 @@
 }
 
 .eyebrow {
-  border: 1px solid rgba(15, 143, 127, 0.22);
-  background: rgba(15, 143, 127, 0.09);
-  color: var(--accent-strong);
+  border: 1px solid rgba(251, 144, 20, 0.18);
+  background: rgba(251, 144, 20, 0.08);
+  color: var(--accent-warm);
 }
 
 .heroCopy,
@@ -66,6 +71,14 @@
 .heroCopy h1 {
   font-size: clamp(2.8rem, 5vw, 4.8rem);
   max-width: 10ch;
+}
+
+.playlistHero .heroCopy h1 {
+  max-width: none;
+}
+
+.playlistHero .heroVisual {
+  width: 100%;
 }
 
 .sectionHeader h2 {
@@ -100,7 +113,7 @@
   min-height: 340px;
   border: 1px solid var(--stroke);
   border-radius: 8px;
-  background: #101916;
+  background: #0f0f0f;
 }
 
 .heroImage {
@@ -111,7 +124,7 @@
 .containedImage {
   object-fit: contain;
   object-position: center;
-  background: #101916;
+  background: #0f0f0f;
 }
 
 .heroImageNote {
@@ -132,7 +145,7 @@
   padding: 16px;
   border: 1px solid var(--stroke);
   border-radius: 8px;
-  background: #ffffff;
+  background: var(--surface);
 }
 
 .playlistHeroMeta p {
@@ -145,7 +158,7 @@
   padding: 24px;
   border: 1px solid var(--stroke);
   border-radius: 8px;
-  background: #ffffff;
+  background: var(--surface);
 }
 
 .heroPanel ul {
@@ -193,8 +206,9 @@
 .infoCard {
   border: 1px solid var(--stroke);
   border-radius: 8px;
-  background: #ffffff;
+  background: var(--surface);
   padding: 28px;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.22);
 }
 
 .card,
@@ -214,13 +228,13 @@
 }
 
 .tag {
-  background: rgba(15, 143, 127, 0.09);
+  background: rgba(102, 116, 204, 0.09);
   color: var(--accent-strong);
 }
 
 .status {
-  background: rgba(217, 79, 112, 0.1);
-  color: var(--accent-warm);
+  background: rgba(34, 167, 116, 0.14);
+  color: var(--accent-sun);
 }
 
 .miniPill {
@@ -293,12 +307,12 @@
 .primaryLink {
   background: linear-gradient(135deg, var(--accent) 0%, var(--accent-strong) 100%);
   color: #ffffff;
-  box-shadow: 0 14px 30px rgba(15, 143, 127, 0.22);
+  box-shadow: 0 14px 30px rgba(102, 116, 204, 0.22);
 }
 
 .secondaryLink {
   border: 1px solid var(--stroke);
-  background: #ffffff;
+  background: var(--surface);
 }
 
 .primaryLink:hover,
@@ -366,7 +380,7 @@
 .videoThumb {
   aspect-ratio: 16 / 9;
   min-height: 180px;
-  background: #101916;
+  background: #0f0f0f;
 }
 
 .videoWatchLink {
@@ -380,7 +394,7 @@
   background: linear-gradient(135deg, var(--accent) 0%, var(--accent-strong) 100%);
   color: #ffffff;
   font-weight: 800;
-  box-shadow: 0 14px 30px rgba(15, 143, 127, 0.22);
+  box-shadow: 0 14px 30px rgba(102, 116, 204, 0.22);
   transition: transform 180ms ease, background-color 180ms ease;
 }
 
@@ -421,12 +435,12 @@
 .playlistPrimaryAction {
   background: linear-gradient(135deg, var(--accent) 0%, var(--accent-strong) 100%);
   color: #ffffff;
-  box-shadow: 0 14px 30px rgba(15, 143, 127, 0.22);
+  box-shadow: 0 14px 30px rgba(102, 116, 204, 0.22);
 }
 
 .playlistYoutubeAction {
   border: 1px solid var(--stroke);
-  background: #ffffff;
+  background: var(--surface);
   color: var(--accent-warm);
 }
 
@@ -476,6 +490,44 @@
   transform: translateX(3px);
 }
 
+.contributorCard {
+  gap: 18px;
+}
+
+.contributorHeader {
+  display: grid;
+  grid-template-columns: minmax(96px, 112px) minmax(0, 1fr);
+  gap: 16px;
+  align-items: start;
+}
+
+.contributorAvatarFrame {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 1 / 1;
+  width: 100%;
+  max-width: 112px;
+  border: 1px solid var(--stroke);
+  border-radius: 8px;
+  background: var(--surface-soft);
+}
+
+.contributorAvatar {
+  object-fit: cover;
+  object-position: center top;
+}
+
+.contributorIntroText {
+  display: grid;
+  gap: 8px;
+  align-content: start;
+}
+
+.contributorBio {
+  color: var(--muted);
+  line-height: 1.75;
+}
+
 .contributorImageFrame {
   position: relative;
   overflow: hidden;
@@ -511,6 +563,53 @@
   width: 100%;
 }
 
+.contributorAction {
+  width: 100%;
+}
+
+.sessionActions {
+  display: grid;
+  gap: 10px;
+  margin-top: auto;
+}
+
+.sessionSchedule {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  padding: 14px;
+  border: 1px solid var(--stroke);
+  border-radius: 8px;
+  background: var(--surface-soft);
+}
+
+.sessionScheduleItem {
+  display: grid;
+  gap: 6px;
+}
+
+.sessionSchedule span {
+  color: var(--muted-soft);
+  font-size: 0.76rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.sessionSchedule strong {
+  color: var(--text);
+  font-size: 1rem;
+  line-height: 1.35;
+}
+
+.sessionActions .primaryLink {
+  width: 100%;
+}
+
+.mediaBody .sessionActions .primaryLink {
+  width: 100%;
+}
+
 .mediaBody .primaryLink,
 .mediaBody .secondaryLink {
   width: fit-content;
@@ -522,7 +621,7 @@
   padding: 28px;
   border: 1px solid var(--stroke);
   border-radius: 8px;
-  background: #ffffff;
+  background: var(--surface);
 }
 
 .emptyState p {
@@ -656,6 +755,7 @@
   .card,
   .mediaCard,
   .playlistCard,
+  .contributorCard,
   .videoCard,
   .emptyState,
   .timelineCard,
@@ -675,6 +775,7 @@
   .card h3,
   .mediaCard h3,
   .playlistCard h3,
+  .contributorIntroText h3,
   .videoCard h3,
   .timelineCard h3,
   .noteCard h3,
@@ -704,8 +805,16 @@
     min-height: 190px;
   }
 
+  .contributorHeader {
+    grid-template-columns: 1fr;
+  }
+
   .contributorImageFrame {
     min-height: 190px;
+  }
+
+  .contributorAvatarFrame {
+    max-width: 128px;
   }
 
   .playlistCard .mediaBody {
@@ -727,7 +836,8 @@
 
   .mediaBody .primaryLink,
   .mediaBody .secondaryLink,
-  .contributorActions .primaryLink {
+  .contributorActions .primaryLink,
+  .contributorAction {
     width: 100%;
   }
 
@@ -765,6 +875,10 @@
 
   .mediaThumb {
     min-height: 170px;
+  }
+
+  .contributorHeader {
+    gap: 12px;
   }
 
   .contributorImageFrame {

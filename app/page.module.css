@@ -7,6 +7,7 @@
 
 .page::before,
 .page::after {
+  display: none;
   position: fixed;
   z-index: 0;
   border-radius: 999px;
@@ -21,7 +22,7 @@
   left: -120px;
   width: 360px;
   height: 360px;
-  background: rgba(15, 143, 127, 0.14);
+  background: rgba(102, 116, 204, 0.14);
 }
 
 .page::after {
@@ -29,7 +30,7 @@
   bottom: 140px;
   width: 380px;
   height: 380px;
-  background: rgba(217, 79, 112, 0.12);
+  background: rgba(251, 144, 20, 0.12);
 }
 
 .main {
@@ -49,7 +50,7 @@
 .showcaseSection {
   border: 1px solid var(--stroke);
   border-radius: 8px;
-  background: linear-gradient(180deg, #ffffff 0%, var(--surface-soft) 100%);
+  background: linear-gradient(180deg, var(--surface) 0%, var(--surface-soft) 100%);
   box-shadow: var(--panel-shadow);
 }
 
@@ -94,8 +95,8 @@
 
 .kicker {
   padding: 10px 14px;
-  background: rgba(15, 143, 127, 0.09);
-  border: 1px solid rgba(15, 143, 127, 0.2);
+  background: rgba(102, 116, 204, 0.09);
+  border: 1px solid rgba(102, 116, 204, 0.2);
   color: var(--accent-strong);
   font-size: 0.76rem;
   font-weight: 700;
@@ -148,13 +149,13 @@
 .linkCard a {
   background: linear-gradient(135deg, var(--accent) 0%, var(--accent-strong) 100%);
   color: #ffffff;
-  box-shadow: 0 14px 30px rgba(15, 143, 127, 0.22);
+  box-shadow: 0 14px 30px rgba(102, 116, 204, 0.22);
 }
 
 .secondaryAction,
 .cardLinks a:last-child {
   border: 1px solid var(--stroke);
-  background: #ffffff;
+  background: var(--surface);
   color: var(--text);
 }
 
@@ -178,7 +179,7 @@
   padding: 10px 14px;
   border: 1px solid var(--stroke);
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.74);
+  background: rgba(255, 255, 255, 0.06);
   color: var(--muted-soft);
   font-size: 0.86rem;
 }
@@ -198,7 +199,7 @@
 
 .heroImageFrame {
   min-height: 430px;
-  border: 1px solid rgba(15, 143, 127, 0.14);
+  border: 1px solid rgba(102, 116, 204, 0.14);
 }
 
 .heroImage,
@@ -227,7 +228,7 @@
 
 .heroOverlayPill {
   padding: 8px 12px;
-  background: rgba(255, 255, 255, 0.86);
+  background: rgba(255, 255, 255, 0.9);
   color: var(--accent-strong);
   font-size: 0.72rem;
   font-weight: 800;
@@ -251,13 +252,13 @@
   padding: 20px;
   border: 1px solid var(--stroke);
   border-radius: 8px;
-  background: #ffffff;
+  background: var(--surface);
   transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
 }
 
 .heroHighlightBadge {
   padding: 6px 10px;
-  background: rgba(217, 79, 112, 0.1);
+  background: rgba(251, 144, 20, 0.1);
   color: var(--accent-warm);
   font-size: 0.68rem;
   font-weight: 800;
@@ -286,7 +287,7 @@
   padding: 24px;
   border: 1px solid var(--stroke);
   border-radius: 8px;
-  background: #ffffff;
+  background: var(--surface);
 }
 
 .metricValue {
@@ -310,9 +311,9 @@
 
 .sectionEyebrow {
   padding: 8px 12px;
-  background: rgba(15, 143, 127, 0.08);
-  border: 1px solid var(--stroke);
-  color: var(--accent-strong);
+  background: rgba(251, 144, 20, 0.08);
+  border: 1px solid rgba(251, 144, 20, 0.18);
+  color: var(--accent-warm);
   font-size: 0.72rem;
   font-weight: 800;
 }
@@ -352,8 +353,8 @@
 .showcaseNote {
   border: 1px solid var(--stroke);
   border-radius: 8px;
-  background: #ffffff;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.72);
+  background: var(--surface);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.22);
 }
 
 .featureCard {
@@ -368,7 +369,7 @@
   min-width: 52px;
   justify-content: center;
   padding: 10px 12px;
-  background: rgba(15, 143, 127, 0.09);
+  background: rgba(102, 116, 204, 0.09);
   color: var(--accent-strong);
   font-size: 0.74rem;
   font-weight: 800;
@@ -403,9 +404,7 @@
   display: grid;
   gap: 22px;
   padding: 24px;
-  background:
-    radial-gradient(circle at top right, rgba(217, 79, 112, 0.1) 0, rgba(217, 79, 112, 0) 34%),
-    #ffffff;
+  background: linear-gradient(180deg, var(--surface) 0%, var(--surface-soft) 100%);
 }
 
 .featureImageFrame {
@@ -419,7 +418,7 @@
 
 .boardEyebrow {
   padding: 8px 12px;
-  background: rgba(15, 143, 127, 0.09);
+  background: rgba(102, 116, 204, 0.09);
   color: var(--accent-strong);
   font-size: 0.72rem;
   font-weight: 800;
@@ -442,7 +441,7 @@
 
 .boardCardLabel {
   padding: 7px 10px;
-  background: rgba(217, 79, 112, 0.1);
+  background: rgba(251, 144, 20, 0.1);
   color: var(--accent-warm);
   font-size: 0.68rem;
   font-weight: 800;
@@ -497,7 +496,7 @@
 
 .showcasePill {
   padding: 8px 12px;
-  background: rgba(15, 143, 127, 0.09);
+  background: rgba(102, 116, 204, 0.09);
   color: var(--accent-strong);
   font-size: 0.72rem;
   font-weight: 800;
@@ -541,13 +540,13 @@
 }
 
 .courseTag {
-  background: rgba(15, 143, 127, 0.09);
+  background: rgba(102, 116, 204, 0.09);
   color: var(--accent-strong);
 }
 
 .courseAudience {
-  background: rgba(217, 79, 112, 0.09);
-  color: var(--muted-soft);
+  background: rgba(34, 167, 116, 0.12);
+  color: var(--accent-sun);
 }
 
 .pointList,
@@ -594,7 +593,7 @@
 }
 
 .linkPill {
-  background: rgba(15, 143, 127, 0.09);
+  background: rgba(102, 116, 204, 0.09);
   color: var(--accent-strong);
 }
 
