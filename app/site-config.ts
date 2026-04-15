@@ -55,9 +55,9 @@ export type IconName =
 export const navigationLinks = [
   { href: "/", label: "Home", icon: "home" },
   { href: "/courses", label: "Courses", icon: "courses" },
+  { href: actionLinks.jobs, label: "Jobs", icon: "jobs" },
   { href: "/events", label: "Events", icon: "events" },
   { href: "/contributors", label: "Contributors", icon: "contributors" },
-  { href: actionLinks.jobs, label: "Jobs", icon: "jobs" },
 ] satisfies Array<{ href: string; label: string; icon: IconName }>;
 
 export const footerBottomLinks = [
@@ -77,9 +77,9 @@ export const socialLinks = [
 export const footerQuickLinks = [
   { href: "/", label: "Home", icon: "home" },
   { href: "/courses", label: "Courses", icon: "courses" },
+  { href: actionLinks.jobs, label: "Jobs", icon: "jobs" },
   { href: "/events", label: "Events", icon: "events" },
   { href: "/contributors", label: "Contributors", icon: "contributors" },
-  { href: actionLinks.jobs, label: "Jobs", icon: "jobs" },
 ] satisfies Array<{ href: string; label: string; icon: IconName }>;
 
 export type MediaLink = {
